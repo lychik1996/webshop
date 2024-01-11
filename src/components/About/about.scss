@@ -13,8 +13,7 @@
       opacity: 0.5;
       font-size: 12px;
     }
-    .about_map-about {
-    }
+    
   }
   .about_story {
     display: flex;
@@ -111,6 +110,7 @@
             width: 370px;
             position: relative;
             margin-bottom: 32px;
+            border-radius: 4px;
             img {
               position: absolute;
               bottom: 0;

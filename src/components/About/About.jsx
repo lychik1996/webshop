@@ -1,15 +1,14 @@
 import { Link } from 'react-router-dom';
 import './about.scss';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import Staff from './Staff';
 export default function About() {
   const [staff, setStaff] = useState([]);
   useEffect(() => {
     const getStaff = async () => {
-      const response = await fetch('http://localhost:3001/staffs');
-      const data = await response.json();
-      setStaff(data);
+      await fetch('http://localhost:3001/staffs')
+      .then((response)=>response.json())
+      .then((data)=>setStaff(data))
     };
     getStaff();
   }, []);

@@ -26,7 +26,7 @@ export default function HeadFooter() {
                   <Link to='/'>Home</Link>
                 </li>
                 <li>
-                  <Link>Contact</Link>
+                  <Link to='contact'>Contact</Link>
                 </li>
                 <li>
                   <Link to='about'>About</Link>
