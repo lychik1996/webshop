@@ -94,6 +94,7 @@ header {
         flex-direction: row;
         justify-content: space-between;
         width: 395px;
+        position: relative;
         li {
           input {
             width: 243px;
@@ -114,8 +115,40 @@ header {
           }
 
           .nav_right_user {
-            display: none;
+            position: absolute;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            width: 224px;
+            height: 208px;
+            gap: 13px;
+            padding-top: 18px;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            right: 0px;
+            background: linear-gradient(to  bottom right, #7b8299, #363b69);
+            display: none;//vremenno
+            
+            li{
+              width: 192px;
+              margin: 0 auto;
+              a{
+                display: flex;
+                flex-direction: row;
+                gap: 16px;
+                align-items: center;
+                img{
+                  width: 24px;
+                  height: 24px;
+                }
+                p{
+                  color: white;
+                }
+                
+              }
+            }
           }
+
         }
       }
     }
@@ -156,10 +189,10 @@ footer {
       width: 123px;
     }
     .footer_link {
-        width: 109px;
+      width: 109px;
     }
     .footer_download {
-        width: 198px;
+      width: 198px;
       ul {
         .footer_download-save {
           a {
@@ -170,18 +203,17 @@ footer {
             opacity: 0.7;
           }
         }
-        .footer_download-store{
+        .footer_download-store {
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+        }
+        .footer_download-social {
+          ul {
             display: flex;
             flex-direction: row;
-            gap: 8px;
-        }
-        .footer_download-social{
-            ul{
-                display: flex;
-            flex-direction: row;
-            gap:24px;
-            }   
-            
+            gap: 24px;
+          }
         }
       }
     }
@@ -193,17 +225,15 @@ footer {
       }
     }
   }
-  .footer_bot{
+  .footer_bot {
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin-top: 70px;
     opacity: 0.4;
-    img{
-        margin-right: 6px;
+    img {
+      margin-right: 6px;
     }
   }
 }
-main {
-  height: 500px;
-}
+

@@ -23,13 +23,13 @@ export default function HeadFooter() {
               <h1 className="nav_left">Exclusive</h1>
               <ul className="nav_center">
                 <li>
-                  <Link>Home</Link>
+                  <Link to='/'>Home</Link>
                 </li>
                 <li>
                   <Link>Contact</Link>
                 </li>
                 <li>
-                  <Link>About</Link>
+                  <Link to='about'>About</Link>
                 </li>
                 <li>
                   <Link>Sign Up</Link>

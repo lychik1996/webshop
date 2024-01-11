@@ -1,5 +1,28 @@
 {
     "item":[
         
+    ],
+    "staffs":[
+        {
+            "id":1,
+            "img":"/about/staff1.png",
+            "name":"Tom Cruise",
+            "info":"Founder & Chairman"
+        },
+        {
+            "id":2,
+            "img":"/about/staff2.png",
+            "name":"Emma Watson",
+            "info":"Managing Director"
+
+        },
+        {
+            "id":3,
+            "img":"/about/staff3.png",
+            "name":"Will Smith",
+            "info":"Product Designe"
+
+        }
+        
     ]
 }
