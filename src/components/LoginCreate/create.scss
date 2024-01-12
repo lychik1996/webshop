@@ -1,0 +1,115 @@
+.create {
+  width: 1305px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px;
+  margin-bottom: 140px;
+  img {
+  }
+  .create_form {
+    width: 371px;
+    height: 530px;
+    display: flex;
+    flex-direction: column;
+    h1 {
+      font-size: 36px;
+
+      font-weight: 500;
+      line-height: 30px; /* 83.333% */
+      letter-spacing: 1.44px;
+    }
+    p {
+      font-size: 16px;
+      line-height: 24px;
+      margin-top: 24px;
+      margin-bottom: 48px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      input {
+        width: 370px;
+        height: 32px;
+        border: none;
+        border-bottom: 1px solid rgba(10, 10, 10, 0.4);
+        background-color: none;
+        
+      }
+      input::placeholder {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        opacity: 0.4;
+      }
+      button {
+        width: 371px;
+        height: 56px;
+        border-radius: 4px;
+        background-color: #db4444;
+        border: none;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        color: white;
+      }
+      button:active {
+        background-color: #c13535;
+      }
+    }
+    .create_google {
+      margin-top: 16px;
+      width: 371px;
+      height: 56px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 0, 0, 0.4);
+      img {
+      }
+      p {
+        height: 24px;
+        line-height: 50px;
+      }
+    }
+    .create_google:hover{
+        background-color: rgb(249, 246, 245);
+    }
+    .create_problem {
+        display: flex;
+        flex-direction: row;
+        margin-top: 32px;
+        justify-content: center;
+        gap: 16px;
+      .create_alredy {
+        opacity: 0.7;
+        transition: transform .3s ease-in-out;
+      }
+      .create_alredy:hover {
+        transform: translatey(-2px);
+      }
+      .create_login {
+        font-weight: 500;
+        opacity: 0.7;
+        border-bottom: 1px solid black;
+        transition: transform .3s ease-in-out;
+      }
+      .create_login:hover{
+        transform: translatey(-2px);
+      }
+    }
+  }
+}
+input::-webkit-search-clear-button,
+input::-webkit-search-cancel-button {
+  display: none;
+}
+input:focus {
+  outline: none;
+}

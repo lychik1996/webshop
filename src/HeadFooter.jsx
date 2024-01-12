@@ -20,7 +20,8 @@ export default function HeadFooter() {
           </div>
           <nav>
             <div className="container">
-              <h1 className="nav_left">Exclusive</h1>
+              <Link to='/404error'><h1 className="nav_left">Exclusive</h1></Link>
+              {/* test Link!!!! */}
               <ul className="nav_center">
                 <li>
                   <Link to='/'>Home</Link>
@@ -32,7 +33,7 @@ export default function HeadFooter() {
                   <Link to='about'>About</Link>
                 </li>
                 <li>
-                  <Link>Sign Up</Link>
+                  <Link to='createAccount'>Sign Up</Link>
                 </li>
               </ul>
               <ul className="nav_right">
@@ -43,17 +44,18 @@ export default function HeadFooter() {
                   />
                 </li>
                 <li>
-                  <Link>
+                  <Link to='wishList'>
                     <img src="headfooter/Wishlist.svg" alt="" />
                   </Link>
                 </li>
                 <li>
-                  <Link>
+                  <Link to='basket'>
                     <img src="headfooter/Cart1.svg" alt="" />
                   </Link>
                 </li>
                 <li>
-                  <img src="headfooter/user1.svg" alt="" />
+                  <Link to='login'><img src="headfooter/user1.svg" alt="" /></Link>
+                  
                   <ul className="nav_right_user">
                     <li>
                       <Link>
@@ -92,7 +94,7 @@ export default function HeadFooter() {
           </nav>
         </header>
         <main>
-          <Suspense>
+          <Suspense fallback={<div className='lazy_load'>Loading...</div>}>
             <Outlet />
           </Suspense>
         </main>

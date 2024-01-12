@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import './about.scss';
 import { useEffect, useState } from 'react';
 import Staff from './Staff';
+import MyLoader from './SkeletonStaff';
 export default function About() {
   const [staff, setStaff] = useState([]);
   useEffect(() => {
@@ -12,6 +13,7 @@ export default function About() {
     };
     getStaff();
   }, []);
+  
 
   return (
     <>
@@ -72,8 +74,10 @@ export default function About() {
         <div className="about_slider">
           <div className="about_slider_block">
             <div className="about_slider_staffs">
-              {staff.map((item) => (
+              {staff.length>1?staff.map((item) => (
                 <Staff key={item.id} staff={item} />
+              )):new Array(3).fill(1).map((_,index)=>(
+                <MyLoader key={index}/>
               ))}
             </div>
           </div>

@@ -8,6 +8,9 @@
   font-weight: 400;
   line-height: 21px;
 }
+p,h1,h2,h3{
+  cursor: default;
+}
 h1 {
   font-family: Inter;
   font-size: 24px;
@@ -44,6 +47,10 @@ input[type='search']::-webkit-search-cancel-button {
 }
 input[type='search'] {
   -webkit-appearance: none;
+}
+.lazy_load{
+  width: 100vw;
+  height: 1000px;
 }
 header {
   .sale {
