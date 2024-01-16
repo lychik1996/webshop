@@ -1,8 +1,22 @@
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 
 export default function HeadFooter() {
   const [activeUser,setActiveUser]=useState(false);//user menu
+  const [prevScroll,setPrevScroll]=useState(0);//for position header
+  const [fixedHeader,setFixedHeader]=useState(true);//for position header
+  const handleScroll=()=>{//for position header
+    const currentScroll = window.pageYOffset;
+    setFixedHeader(prevScroll>currentScroll || currentScroll<20);
+    setPrevScroll(currentScroll);
+  }
+  useEffect(()=>{//for position header
+    window.addEventListener('scroll',handleScroll);
+    return()=>{
+      window.removeEventListener('scroll',handleScroll);
+    }
+  },[prevScroll])
+
   const handleMouseEnter = ()=>{//user menu
     setActiveUser(true)
   };
@@ -12,7 +26,7 @@ export default function HeadFooter() {
   return (
     <>
       <div className="all">
-        <header>
+        <header style={fixedHeader?{position:'fixed'}:{position:'absolute'}}>
           <div className="sale">
             <div className="container">
               <p className="sale_text">

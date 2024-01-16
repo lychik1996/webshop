@@ -2,6 +2,7 @@ import { useState } from 'react';
 import BasketItem from './BasketItem';
 import './basket.scss';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 const data = [
     {
@@ -17,6 +18,11 @@ const data = [
 ]
 export default function Basket() {
     const [item,setItem]=useState(data);
+    const {handleSubmit,register,reset}=useForm();
+    const handleCode=(code)=>{
+      console.log(code);
+      reset();
+    }
 
   return (
     <>
@@ -47,8 +53,8 @@ export default function Basket() {
           <button>Update Cart</button>
         </div>
         <div className="basket_bottom">
-          <form className="basket_code">
-            <input type="text" placeholder="Coupon Code" />
+          <form className="basket_code" onSubmit={handleSubmit(handleCode)}>
+            <input type="text" {...register('code',{required:true})} placeholder="Coupon Code" />
             <button>Apply Coupon</button>
           </form>
           <div className="basket_total">
