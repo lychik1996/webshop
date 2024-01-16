@@ -134,13 +134,13 @@
         position: absolute;
         right: 32px;
       }
+      button:active{
+        background-color: #c33a3a;
+      }
     }
   }
 }
-input::-webkit-search-clear-button,
-input::-webkit-search-cancel-button {
-  display: none;
-}
+
 input,
 textarea {
   -webkit-appearance: none;

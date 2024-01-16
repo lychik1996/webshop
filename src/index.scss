@@ -134,11 +134,12 @@ header {
             position: absolute;
             right: 0px;
             background: linear-gradient(to  bottom right, #7b8299, #363b69);
-            display: none;//vremenno
-            
+            z-index: 1;
+            display: none;
             li{
               width: 192px;
               margin: 0 auto;
+              cursor: pointer;
               a{
                 display: flex;
                 flex-direction: row;
@@ -150,11 +151,16 @@ header {
                 }
                 p{
                   color: white;
+                  cursor: pointer;
                 }
                 
               }
             }
           }
+          .user_active{
+            display: flex;
+          }
+          
 
         }
       }

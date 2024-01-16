@@ -1,7 +1,14 @@
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 
 export default function HeadFooter() {
+  const [activeUser,setActiveUser]=useState(false);//user menu
+  const handleMouseEnter = ()=>{//user menu
+    setActiveUser(true)
+  };
+  const handleMouseLeave= ()=>{//user menu
+    setActiveUser(false)
+  }
   return (
     <>
       <div className="all">
@@ -53,10 +60,10 @@ export default function HeadFooter() {
                     <img src="headfooter/Cart1.svg" alt="" />
                   </Link>
                 </li>
-                <li>
+                <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                   <Link to='login'><img src="headfooter/user1.svg" alt="" /></Link>
                   
-                  <ul className="nav_right_user">
+                  <ul  className={activeUser?"nav_right_user user_active":"nav_right_user "}>
                     <li>
                       <Link>
                         <img src="headfooter/user/user.svg" alt="" />
@@ -64,7 +71,7 @@ export default function HeadFooter() {
                       </Link>
                     </li>
                     <li>
-                      <Link>
+                      <Link to='basket'>
                         <img src="headfooter/user/order.svg" alt="" />
                         <p>My Order</p>
                       </Link>
@@ -76,7 +83,7 @@ export default function HeadFooter() {
                       </Link>
                     </li>
                     <li>
-                      <Link>
+                      <Link to='wishList'>
                         <img src="headfooter/user/reviews.svg" alt="" />
                         <p>My Reviews</p>
                       </Link>
