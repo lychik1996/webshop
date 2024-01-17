@@ -8,12 +8,11 @@ export default function About() {
   useEffect(() => {
     const getStaff = async () => {
       await fetch('http://localhost:3001/staffs')
-      .then((response)=>response.json())
-      .then((data)=>setStaff(data))
+        .then((response) => response.json())
+        .then((data) => setStaff(data));
     };
     getStaff();
   }, []);
-  
 
   return (
     <>
@@ -43,11 +42,13 @@ export default function About() {
               ranging from consumer.
             </p>
           </div>
-          <img
-            src="about/main.png"
-            alt=""
-            style={{ width: 705, height: 609 }}
-          />
+          <div className='about_story_img'>
+            <img
+              src="about/main.png"
+              alt=""
+              style={{ width: 705, height: 609 }}
+            />
+          </div>
         </div>
         <div className="about_statistic">
           <div>
@@ -74,11 +75,11 @@ export default function About() {
         <div className="about_slider">
           <div className="about_slider_block">
             <div className="about_slider_staffs">
-              {staff.length>1?staff.map((item) => (
-                <Staff key={item.id} staff={item} />
-              )):new Array(3).fill(1).map((_,index)=>(
-                <MyLoader key={index}/>
-              ))}
+              {staff.length > 1
+                ? staff.map((item) => <Staff key={item.id} staff={item} />)
+                : new Array(3)
+                    .fill(1)
+                    .map((_, index) => <MyLoader key={index} />)}
             </div>
           </div>
           <ul>

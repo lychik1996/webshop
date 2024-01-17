@@ -47,6 +47,16 @@
         font-size: 16px;
       }
     }
+    .about_story_img{
+      overflow: hidden;
+      position: relative;
+      width: 705px;
+      height: 609px;
+      img{
+        position: absolute;
+        left:-90px;
+      }
+    }
   }
   .about_statistic {
     display: flex;
