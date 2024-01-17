@@ -1,11 +1,21 @@
 .login {
-  width: 1305px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
   margin-top: 60px;
   margin-bottom: 140px;
+  align-items: center;
+  gap:129px;
+
+  .img{
+    width: 630px;
+    height: 781px;
+    position: relative;
+    img{
+      position: absolute;
+      left:-175px;
+    }
+  }
   .login_form {
     width: 371px;
     height: 326px;

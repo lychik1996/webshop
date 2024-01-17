@@ -1,12 +1,20 @@
 .create {
-  width: 1305px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   margin-top: 60px;
   margin-bottom: 140px;
-  img {
+  gap:129px;
+
+  .img{
+    width: 630px;
+    height: 781px;
+    position: relative;
+    img{
+      position: absolute;
+      left:-175px;
+    }
   }
   .create_form {
     width: 371px;
