@@ -15,6 +15,7 @@ const CreateAccount = lazy(() =>
 );
 const WishList = lazy(() => import('./components/WishList/WishList'));
 const Basket = lazy(() => import('./components/Basket/Basket'));
+const Item = lazy(()=>import('./components/Item/Item'))
 const NotFound =lazy(()=>import('./components/NotFound/NotFound'));
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
         <Route path="/createAccount" element={<CreateAccount />} />
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/basket" element={<Basket />} />
+        <Route path='/category/item' element={<Item/>}/>
+        {/* need to change category item */}
         <Route path='*' exact element={<NotFound/>}/>
       </Route>
     )

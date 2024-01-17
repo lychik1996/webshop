@@ -7,7 +7,7 @@ import WishListForU from './WishListForU';
 const data = [
   { id: 1, name: 'Gucci duffle bag', price: 1160, discount: 35, new:false },
   { id: 2, name: 'RGB liquid CPU Cooler', price: 1960, discount: 0, new:true },
-  { id: 3, name: 'GP11 Shooter USB Gamepad', price: 550, discount: 0, new:false },
+  { id: 3, name: 'GP11 Shooter USB Gamepad', price: 550, discount: 0, new:true },
   { id: 4, name: 'Quilted Satin Jacket', price: 750, discount: 0, new:false },
 ];
 const dataforU = [

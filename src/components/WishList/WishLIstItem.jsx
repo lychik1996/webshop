@@ -7,13 +7,13 @@ export default function WishListItem({ item }) {
           {item.new && <p className="new">NEW</p>}
 
           <div>
-            <img src="wishList/icon-delete.svg" className="delete" alt="" />
+            <img src="/wishList/icon-delete.svg" className="delete" alt="" />
           </div>
 
-          <img src={`wishList/products/${item.id}.png`} className="item" alt="" />
+          <img src={`/wishList/products/${item.id}.png`} className="item" alt="" />
         </div>
         <div className="wishList_item_btn">
-          <img src="wishList/cart.svg" alt="" />
+          <img src="/wishList/cart.svg" alt="" />
           <p>Add To Cart</p>
         </div>
         <p className="wishList_item-name">{item.name}</p>

@@ -9,13 +9,13 @@ export default function WishListForU({item}) {
         {item.discount > 0 && <p className="discount">-{item.discount}%</p>}
           {item.new && <p className="new">NEW</p>}
           <div>
-            <img src="wishList/quick.svg" className="quick" alt="" />
+            <img src="/wishList/quick.svg" className="quick" alt="" />
           </div>
 
-          <img src={`wishList/forU/${item.id}.png`} className="item" alt="" />
+          <img src={`/wishList/forU/${item.id}.png`} className="item" alt="" />
         </div>
         <div className="wishList_forU_btn">
-          <img src="wishList/cart.svg" alt="" />
+          <img src="/wishList/cart.svg" alt="" />
           <p>Add To Cart</p>
         </div>
         <p className="wishList_forU-name">ASUS FHD Gaming Laptop</p>
