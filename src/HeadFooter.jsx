@@ -120,7 +120,7 @@ export default function HeadFooter() {
             <Outlet />
           </Suspense>
         </main>
-        <footer>
+        <footer >
           <div className="container">
             <ul className='footer_info'>
               <li className="footer_exclusive">

@@ -8,6 +8,9 @@
   font-weight: 400;
   line-height: 21px;
 }
+body{
+  min-width: max-content;
+}
 p,h1,h2,h3{
   cursor: default;
 }
@@ -32,6 +35,7 @@ a {
   all: unset;
   cursor: pointer;
 }
+
 .all {
   display: flex;
   flex-direction: column;
@@ -55,6 +59,7 @@ input[type='search'] {
 header {
   width: 100%;
   z-index: 1;
+  min-width: max-content;
   .sale {
     height: 48px;
     background-color: black;
@@ -182,6 +187,7 @@ footer {
     flex-direction: row;
     margin-top: 80px;
     justify-content: space-between;
+    
     .footer_exclusive {
       width: 217px;
       ul {
