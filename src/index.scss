@@ -10,6 +10,7 @@
 }
 body{
   min-width: max-content;
+  position: relative;
 }
 p,h1,h2,h3{
   cursor: default;
@@ -59,6 +60,7 @@ input[type='search'] {
 header {
   z-index: 1;
   width: 100%;
+  min-width: 100%;
   .sale {
     height: 48px;
     background-color: black;
