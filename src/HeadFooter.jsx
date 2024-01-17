@@ -2,32 +2,41 @@ import { Suspense, useEffect, useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 
 export default function HeadFooter() {
-  const [activeUser,setActiveUser]=useState(false);//user menu
-  const [prevScroll,setPrevScroll]=useState(0);//for position header
-  const [fixedHeader,setFixedHeader]=useState(true);//for position header
-  const handleScroll=()=>{//for position header
-    const currentScroll = window.pageYOffset;//pageYOffset количество пикселей прокрутки
-    setFixedHeader(prevScroll>currentScroll );
-    setPrevScroll(currentScroll);
-  }
-  
-  useEffect(()=>{//for position header
-    window.addEventListener('scroll',handleScroll);
-    return()=>{
-      window.removeEventListener('scroll',handleScroll);
+  const [activeUser, setActiveUser] = useState(false); //user menu
+  const [prevScroll, setPrevScroll] = useState(0); //for position header
+  const [fixedHeader, setFixedHeader] = useState(true); //for position header
+  const handleScroll = () => {
+    //for position header
+    const currentScroll = window.pageYOffset; //pageYOffset количество пикселей прокрутки
+    const scrollDiference = Math.abs(prevScroll - currentScroll);
+    if (scrollDiference > 50) {
+      setFixedHeader(prevScroll > currentScroll);
+      setPrevScroll(currentScroll);
     }
-  },[prevScroll])
-
-  const handleMouseEnter = ()=>{//user menu
-    setActiveUser(true)
   };
-  const handleMouseLeave= ()=>{//user menu
-    setActiveUser(false)
-  }
+
+  useEffect(() => {
+    //for position header
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [prevScroll]);
+
+  const handleMouseEnter = () => {
+    //user menu
+    setActiveUser(true);
+  };
+  const handleMouseLeave = () => {
+    //user menu
+    setActiveUser(false);
+  };
   return (
     <>
       <div className="all">
-        <header style={fixedHeader?{position:'fixed'}:{position:'absolute'}}>
+        <header
+          style={fixedHeader ? { position: 'fixed' } : { position: 'absolute' }}
+        >
           <div className="sale">
             <div className="container">
               <p className="sale_text">
@@ -42,20 +51,22 @@ export default function HeadFooter() {
           </div>
           <nav>
             <div className="container">
-              <Link to='/category/item'><h1 className="nav_left">Exclusive</h1></Link>
+              <Link to="/category/item">
+                <h1 className="nav_left">Exclusive</h1>
+              </Link>
               {/* test Link!!!! */}
               <ul className="nav_center">
                 <li>
-                  <Link to='/'>Home</Link>
+                  <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link to='contact'>Contact</Link>
+                  <Link to="contact">Contact</Link>
                 </li>
                 <li>
-                  <Link to='about'>About</Link>
+                  <Link to="about">About</Link>
                 </li>
                 <li>
-                  <Link to='createAccount'>Sign Up</Link>
+                  <Link to="createAccount">Sign Up</Link>
                 </li>
               </ul>
               <ul className="nav_right">
@@ -66,19 +77,30 @@ export default function HeadFooter() {
                   />
                 </li>
                 <li>
-                  <Link to='wishList'>
-                    <img src='/headfooter/Wishlist.svg' alt="" />
+                  <Link to="wishList">
+                    <img src="/headfooter/Wishlist.svg" alt="" />
                   </Link>
                 </li>
                 <li>
-                  <Link to='basket'>
+                  <Link to="basket">
                     <img src="/headfooter/Cart1.svg" alt="" />
                   </Link>
                 </li>
-                <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                  <Link to='login'><img src="/headfooter/user1.svg" alt="" /></Link>
-                  
-                  <ul  className={activeUser?"nav_right_user user_active":"nav_right_user "}>
+                <li
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Link to="login">
+                    <img src="/headfooter/user1.svg" alt="" />
+                  </Link>
+
+                  <ul
+                    className={
+                      activeUser
+                        ? 'nav_right_user user_active'
+                        : 'nav_right_user '
+                    }
+                  >
                     <li>
                       <Link>
                         <img src="/headfooter/user/user.svg" alt="" />
@@ -86,7 +108,7 @@ export default function HeadFooter() {
                       </Link>
                     </li>
                     <li>
-                      <Link to='basket'>
+                      <Link to="basket">
                         <img src="/headfooter/user/order.svg" alt="" />
                         <p>My Order</p>
                       </Link>
@@ -98,7 +120,7 @@ export default function HeadFooter() {
                       </Link>
                     </li>
                     <li>
-                      <Link to='wishList'>
+                      <Link to="wishList">
                         <img src="/headfooter/user/reviews.svg" alt="" />
                         <p>My Reviews</p>
                       </Link>
@@ -116,13 +138,13 @@ export default function HeadFooter() {
           </nav>
         </header>
         <main>
-          <Suspense fallback={<div className='lazy_load'>Loading...</div>}>
+          <Suspense fallback={<div className="lazy_load">Loading...</div>}>
             <Outlet />
           </Suspense>
         </main>
-        <footer >
+        <footer>
           <div className="container">
-            <ul className='footer_info'>
+            <ul className="footer_info">
               <li className="footer_exclusive">
                 <ul>
                   <li>
@@ -143,7 +165,6 @@ export default function HeadFooter() {
                       id=""
                       placeholder="Enter your email"
                     />
-                    
                   </li>
                 </ul>
               </li>
@@ -260,7 +281,7 @@ export default function HeadFooter() {
                 </ul>
               </li>
             </ul>
-            <div className='footer_bot'>
+            <div className="footer_bot">
               <img src="/headfooter/c.svg" alt="" />
               <p>Copyright Rimel 2022. All right reserved</p>
             </div>
