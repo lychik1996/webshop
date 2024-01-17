@@ -25,7 +25,7 @@ export default function HeadFooter() {
 
   const handleMouseEnter = () => {
     //user menu
-    setActiveUser(true);
+    setActiveUser(!activeUser);
   };
   const handleMouseLeave = () => {
     //user menu
@@ -86,13 +86,8 @@ export default function HeadFooter() {
                     <img src="/headfooter/Cart1.svg" alt="" />
                   </Link>
                 </li>
-                <li
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <Link to="login">
-                    <img src="/headfooter/user1.svg" alt="" />
-                  </Link>
+                <li onClick={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                  <img src="/headfooter/user1.svg" alt="" />
 
                   <ul
                     className={

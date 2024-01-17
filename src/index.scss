@@ -110,6 +110,9 @@ header {
         width: 395px;
         position: relative;
         li {
+          img{
+            cursor: pointer;
+          }
           input {
             width: 243px;
             height: 38px;
