@@ -32,6 +32,7 @@ function App() {
         <Route path='/:itemName' element={<Item/>}/>
         {/* need to change category item */}
         <Route path='*' exact element={<NotFound/>}/>
+        <Route path='/notfoundpage' exact element={<NotFound/>}/>
       </Route>
     )
   );

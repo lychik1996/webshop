@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Rating } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -21,8 +21,9 @@ const MOCH = 'https://65a90569219bfa3718683366.mockapi.io/items';
 //   sizes: ['XS', 'S', 'M', 'L', 'XL'],
 // };
 export default function Item() {
+  const navigate = useNavigate();
   const { itemName } = useParams();
-  const [itemTest, setItemTest] = useState({});
+  const [itemTest, setItemTest] = useState(null);
   const { handleSubmit, register, reset, setValue, getValues } = useForm();
   const [rating, setRating] = useState(0);
   const [selectedColour, setSelectedColour] = useState('');
@@ -34,6 +35,10 @@ export default function Item() {
     const loadItem = async () => {
       try {
         const response = await fetch(`${MOCH}?name=${itemName}`);
+        if(!response.ok){
+          navigate('/notfoundpage')
+          return
+        }
         const data = await response.json();
         setItemTest(data[0]);
         setRating(data[0].rating);
@@ -43,6 +48,7 @@ export default function Item() {
         
       } catch (error) {
         console.error('Помилка отримання даних:', error);
+        
       }
       finally{
         console.log('all good');
@@ -53,7 +59,7 @@ export default function Item() {
   }, [itemName]);
   
   if (!itemTest || Object.keys(itemTest).length === 0) {//if we dont have item
-    return <NotFound />;
+    return <div>Loading...</div>;
   }
   const buyItem = (data) => {
     const itemData = {
