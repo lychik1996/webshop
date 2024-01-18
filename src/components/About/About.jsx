@@ -3,11 +3,13 @@ import './about.scss';
 import { useEffect, useState } from 'react';
 import Staff from './Staff';
 import MyLoader from './SkeletonStaff';
+const API = 'http://localhost:3001/staffs';
+const MOCH = 'https://65a90569219bfa3718683366.mockapi.io/staffs';
 export default function About() {
   const [staff, setStaff] = useState([]);
   useEffect(() => {
     const getStaff = async () => {
-      await fetch('http://localhost:3001/staffs')
+      await fetch(MOCH)
         .then((response) => response.json())
         .then((data) => setStaff(data));
     };

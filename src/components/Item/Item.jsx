@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import './item.scss';
 import NotFound from '../NotFound/NotFound';
 const API = 'http://localhost:3001/items';
+const MOCH = 'https://65a90569219bfa3718683366.mockapi.io/items';
 // const itemTest = {
 //   id: 1,
 //   name: 'Havic HV G-92 Gamepad',
@@ -32,7 +33,7 @@ export default function Item() {
   useEffect(() => {
     const loadItem = async () => {
       try {
-        const response = await fetch(`${API}?name=${itemName}`);
+        const response = await fetch(`${MOCH}?name=${itemName}`);
         const data = await response.json();
         setItemTest(data[0]);
         setRating(data[0].rating);
