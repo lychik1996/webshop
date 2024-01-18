@@ -1,29 +1,59 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Rating } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import './item.scss';
-const itemTest = {
-  id: 1,
-  name: 'Havic HV G-92 Gamepad',
-  category: 'Gaming',
-  description:
-    'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressuresensitive.',
-  imgsL: ['1l.png', '2l.png', '3l.png', '4l.png'],
-  imgsS: ['1s.png', '2s.png', '3s.png', '4s.png'],
-  price: 192,
-  rating: 3,
-  reviews: 150,
-  colour: ['rgba(160, 188, 224, 1)', 'rgba(224, 117, 117, 1)'],
-  sizes: ['XS', 'S', 'M', 'L', 'XL'],
-};
+import NotFound from '../NotFound/NotFound';
+const API = 'http://localhost:3001/items';
+// const itemTest = {
+//   id: 1,
+//   name: 'Havic HV G-92 Gamepad',
+//   category: 'Gaming',
+//   description:
+//     'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressuresensitive.',
+//   imgsL: ['1l.png', '2l.png', '3l.png', '4l.png'],
+//   imgsS: ['1s.png', '2s.png', '3s.png', '4s.png'],
+//   price: 192,
+//   rating: 3,
+//   reviews: 150,
+//   colour: ['rgba(160, 188, 224, 1)', 'rgba(224, 117, 117, 1)'],
+//   sizes: ['XS', 'S', 'M', 'L', 'XL'],
+// };
 export default function Item() {
+  const { itemName } = useParams();
+  const [itemTest, setItemTest] = useState({});
   const { handleSubmit, register, reset, setValue, getValues } = useForm();
-  const [rating, setRating] = useState(itemTest.rating);
-  const [selectedColour, setSelectedColour] = useState(itemTest.colour[0]);
-  const [selectedSize, setSelectedSize] = useState(itemTest.sizes[2]);
+  const [rating, setRating] = useState(0);
+  const [selectedColour, setSelectedColour] = useState('');
+  const [selectedSize, setSelectedSize] = useState('');
   const [count, setCount] = useState(1);
-  const [selectedImg, setSelectedImg] = useState(itemTest.imgsL[0]);
+  const [selectedImg, setSelectedImg] = useState('');
+  
+  useEffect(() => {
+    const loadItem = async () => {
+      try {
+        const response = await fetch(`${API}?name=${itemName}`);
+        const data = await response.json();
+        setItemTest(data[0]);
+        setRating(data[0].rating);
+        setSelectedColour(data[0].colour[0]);
+        setSelectedSize(data[0].sizes[2]);
+        setSelectedImg(data[0].imgsL[0]);
+        
+      } catch (error) {
+        console.error('Помилка отримання даних:', error);
+      }
+      finally{
+        console.log('all good');
+      }
+    };
+
+    loadItem();
+  }, [itemName]);
+  
+  if (!itemTest || Object.keys(itemTest).length === 0) {//if we dont have item
+    return <NotFound />;
+  }
   const buyItem = (data) => {
     const itemData = {
       ...data,
@@ -66,7 +96,7 @@ export default function Item() {
                 onClick={() => setSelectedImg(img.replace('s', 'l'))}
               >
                 <img
-                  src={`/item/itemTest/${img}`}
+                  src={`/item/${itemTest.name}/${img}`}
                   style={{ maxWidth: 122, maxHeight: 106 }}
                   alt=""
                 />
@@ -74,7 +104,7 @@ export default function Item() {
             ))}
           </div>
           <div className="item_img">
-            <img src={`/item/itemTest/${selectedImg}`} alt="" />
+            <img src={`/item/${itemTest.name}/${selectedImg}`} alt="" />
           </div>
           <div className="item_info">
             <h1 className="item_name">{itemTest.name}</h1>

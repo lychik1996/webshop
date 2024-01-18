@@ -29,7 +29,7 @@ function App() {
         <Route path="/createAccount" element={<CreateAccount />} />
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/basket" element={<Basket />} />
-        <Route path='/category/item' element={<Item/>}/>
+        <Route path='/:itemName' element={<Item/>}/>
         {/* need to change category item */}
         <Route path='*' exact element={<NotFound/>}/>
       </Route>

@@ -51,7 +51,7 @@ export default function HeadFooter() {
           </div>
           <nav>
             <div className="container">
-              <Link to="/category/item">
+              <Link to="/Havic HV G-92 Gamepad">
                 <h1 className="nav_left">Exclusive</h1>
               </Link>
               {/* test Link!!!! */}

@@ -91,6 +91,9 @@ header {
       justify-content: space-between;
       align-items: center;
       height: 100px;
+      h1{
+        cursor: pointer;
+      }
       .nav_center {
         display: flex;
         width: 367px;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import BasketItem from './BasketItem';
 import './basket.scss';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 const data = [
@@ -17,6 +17,7 @@ const data = [
     }
 ]
 export default function Basket() {
+  
     const [item,setItem]=useState(data);
     const {handleSubmit,register,reset}=useForm();
     const handleCode=(code)=>{
