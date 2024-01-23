@@ -28,7 +28,7 @@ export default function WishListForU({ item }) {
           <img src="/wishList/cart.svg" alt="" />
           <p>Add To Cart</p>
         </div>
-        <p className="wishList_forU-name">ASUS FHD Gaming Laptop</p>
+        <p className="wishList_forU-name">{item.name}</p>
         <div className="wishList_forU_price">
           {item.discount > 0 && (
             <p className="price_discount">

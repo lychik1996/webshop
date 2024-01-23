@@ -3,7 +3,6 @@ import { Rating } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import './item.scss';
-import NotFound from '../NotFound/NotFound';
 const API = 'http://localhost:3001/items';
 const MOCH = 'https://65a90569219bfa3718683366.mockapi.io/items';
 // const itemTest = {
@@ -30,6 +29,7 @@ export default function Item() {
   const [selectedSize, setSelectedSize] = useState('');
   const [count, setCount] = useState(1);
   const [selectedImg, setSelectedImg] = useState('');
+  console.log(itemName);
   
   useEffect(() => {
     const loadItem = async () => {
@@ -47,11 +47,8 @@ export default function Item() {
         setSelectedImg(data[0].imgsL[0]);
         
       } catch (error) {
-        console.error('Помилка отримання даних:', error);
+        navigate('/notfoundpage')
         
-      }
-      finally{
-        console.log('all good');
       }
     };
 
