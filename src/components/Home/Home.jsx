@@ -140,7 +140,7 @@ const exploreAPI = [
     discount: 35,
     new: false,
     rating: 4,
-    colour: ['blue', 'red'],
+    colour: ['blue', 'red', 'gold','green'],
   },
   {
     id: 6,
