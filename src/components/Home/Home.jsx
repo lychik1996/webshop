@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import PreHomeItem from './HomeItem/PreHomeItem';
 
 const customStartDate = '2024-01-29T12:00:00';
+const StartDateAdv = '2024-02-03T12:00:00';
 const saleAPi = [
   {
     id: 1,
@@ -89,34 +90,134 @@ const bestAPI = [
     rating: 2,
   },
 ];
+const exploreAPI = [
+  {
+    id: 1,
+    name: 'The north coat',
+    nav: 'explore',
+    category: 'Gaming',
+    price: 120,
+    discount: 35,
+    new: false,
+    rating: 4,
+  },
+  {
+    id: 2,
+    name: 'IPS LCD Gaming Monitor',
+    nav: 'explore',
+    category: 'Gaming',
+    price: 1960,
+    discount: 0,
+    new: false,
+    rating: 3,
+  },
+  {
+    id: 3,
+    name: 'HAVIT HV-G92 Gamepad',
+    nav: 'explore',
+    category: 'Gaming',
+    price: 550,
+    discount: 0,
+    new: true,
+    rating: 5,
+  },
+  {
+    id: 4,
+    name: 'AK-900 Wired Keyboard',
+    nav: 'explore',
+    category: 'Gaming',
+    price: 750,
+    discount: 0,
+    new: false,
+    rating: 2,
+  },
+  {
+    id: 5,
+    name: 'The north coat',
+    nav: 'explore',
+    category: 'Gaming',
+    price: 120,
+    discount: 35,
+    new: false,
+    rating: 4,
+    colour: ['blue', 'red'],
+  },
+  {
+    id: 6,
+    name: 'IPS LCD Gaming Monitor',
+    nav: 'explore',
+    category: 'Gaming',
+    price: 1960,
+    discount: 0,
+    new: false,
+    rating: 3,
+    colour: ['grey', 'red'],
+  },
+  {
+    id: 7,
+    name: 'HAVIT HV-G92 Gamepad',
+    nav: 'explore',
+    category: 'Gaming',
+    price: 550,
+    discount: 0,
+    new: true,
+    rating: 5,
+    colour: ['green', 'red'],
+  },
+  {
+    id: 8,
+    name: 'AK-900 Wired Keyboard',
+    nav: 'explore',
+    category: 'Gaming',
+    price: 750,
+    discount: 0,
+    new: false,
+    rating: 2,
+    colour: ['green', 'red'],
+  },
+];
 export default function Home() {
   const [sale, setSele] = useState(saleAPi);
   const [best, setBest] = useState(bestAPI);
+  const [explore, setExplore] = useState(exploreAPI);
   const [timeSales, setTimeSales] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
   });
-  useEffect(() => {
-    //useEffect for date
-    const startDate = new Date(customStartDate);
-
+  const [timeAdv, setTimeAdv] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+  //for useEffect Date
+  const timerIntervalFunc = (startDate, setEffect) => {
     const timerInterval = setInterval(() => {
       const elapsedTime = startDate - new Date();
 
       if (elapsedTime >= 0) {
         const remainingTime = calculateTimeRemaining(elapsedTime);
-        setTimeSales(remainingTime);
+        setEffect(remainingTime);
       } else {
         clearInterval(timerInterval);
       }
     }, 1000);
-
-    return () => clearInterval(timerInterval);
+  };
+  //useEffect Date
+  useEffect(() => {
+    const startDate = new Date(customStartDate);
+    timerIntervalFunc(startDate, setTimeSales);
+    return () => clearInterval(timerIntervalFunc);
   }, []);
+  useEffect(() => {
+    const startDate = new Date(StartDateAdv);
+    timerIntervalFunc(startDate, setTimeAdv);
+    return () => clearInterval(timerIntervalFunc);
+  }, []);
+  //calculate Date
   const calculateTimeRemaining = (elapsedTime) => {
-    //calculate Date
     const remainingSeconds = Math.floor(elapsedTime / 1000);
 
     const days = Math.floor(remainingSeconds / (24 * 60 * 60));
@@ -132,12 +233,12 @@ export default function Home() {
     };
   };
   //smooth scroll btn
-  const scrollToTop=()=>{
+  const scrollToTop = () => {
     window.scrollTo({
-        behavior:'smooth',
-        top:0
-    })
-  }
+      behavior: 'smooth',
+      top: 0,
+    });
+  };
 
   return (
     <>
@@ -342,7 +443,148 @@ export default function Home() {
                   .map((_, index) => <PreHomeItem key={index} />)}
           </ul>
         </div>
-        <div className='arrow_slide_top' onClick={scrollToTop}><img src="/home/arrow-up.svg" alt="" /></div>
+        <div className="advertising">
+          <div className="advertising_left">
+            <p className="advertising_left_category">Categories</p>
+            <h2 className="advertising_left_name">
+              Enhance Your Music Experience
+            </h2>
+            <div className="advertising_left_timer">
+              <div className="advertising_left_time">
+                <p className="time">
+                  {timeAdv.days < 10 && '0'}
+                  {timeAdv.days}
+                </p>
+                <p className="name">Days</p>
+              </div>
+              <div className="advertising_left_time">
+                <p className="time">
+                  {timeAdv.hours < 10 && '0'}
+                  {timeAdv.hours}
+                </p>
+                <p className="name">Hours</p>
+              </div>
+              <div className="advertising_left_time">
+                <p className="time">
+                  {timeAdv.minutes < 10 && '0'}
+                  {timeAdv.minutes}
+                </p>
+                <p className="name">Minutes</p>
+              </div>
+              <div className="advertising_left_time">
+                <p className="time">
+                  {timeAdv.seconds < 10 && '0'}
+                  {timeAdv.seconds}
+                </p>
+                <p className="name">Seconds</p>
+              </div>
+            </div>
+            <p className="advertising_left_btn">Buy Now!</p>
+          </div>
+          <div className="advertising_right"></div>
+          <img src="/home/jbl.png" alt="" />
+        </div>
+        
+        <div className="nav_home">
+          <div className="nav_home_top">
+            <div className="nav_home_top_block"></div>
+            <p className="nav_home_top_text">Our Products</p>
+          </div>
+          <div className="nav_home_bot">
+            <div className="nav_home_bot_left">
+              <h1 className="nav_home_bot_text">Explore Our Products</h1>
+            </div>
+            <div className="nav_home_bot_arrows">
+              <div>
+                <img src="/home/arrow-left.svg" alt="" />
+              </div>
+              <div>
+                <img src="/home/arrow-right.svg" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="explore">
+          <ul className="explore_items">
+            {sale.length > 1
+              ? explore.map((item) => <HomeItem key={item.id} item={item} />)
+              : new Array(8)
+                  .fill(1)
+                  .map((_, index) => <PreHomeItem key={index} />)}
+          </ul>
+          <Link className="explore_all">View All Products</Link>
+        </div>
+        <div className="nav_home">
+          <div className="nav_home_top">
+            <div className="nav_home_top_block"></div>
+            <p className="nav_home_top_text">Featured</p>
+          </div>
+          <div className="nav_home_bot">
+            <div className="nav_home_bot_left">
+              <h1 className="nav_home_bot_text">New Arrival</h1>
+            </div>
+          </div>
+        </div>
+        <div className="arrival">
+          <div className="arrival_left">
+            <div className="group_text">
+              <p className="name">PlayStation 5</p>
+              <p className="overview">Black and White version of the PS5 coming out on sale.</p>
+              <p className="shop_now">Shop Now</p>
+            </div>
+            <img src="/home/ps5.png" alt="" />
+          </div>
+          <div className="arrival_right">
+            <div className="arrival_right_top">
+              <div className="group_text">
+                <p className="name">Women’s Collections</p>
+                <p className="overview">Featured woman collections that give you another vibe.</p>
+                <p className="shop_now">Shop Now</p>
+              </div>
+              <img src="/home/woman.png" alt="" />
+            </div>
+            <div className="arrival_right_bot">
+              <div className="arrival_right_bot_left">
+                <div className="group_text">
+                  <p className="name">Speakers</p>
+                  <p className="overview">Amazon wireless speakers</p>
+                  <p className="shop_now">Shop Now</p>
+                </div>
+                <div className='fill'></div>
+                <img src="/home/likejbl.png" alt="" />
+              </div>
+              <div className="arrival_right_bot_right">
+                <div className="group_text">
+                  <p className="name">Perfume</p>
+                  <p className="overview">GUCCI INTENSE OUD EDP</p>
+                  <p className="shop_now">Shop Now</p>
+                </div>
+                <div className='fill'></div>
+                <img src="/home/guchi.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="home_more">
+          <div>
+            <img src="/home/delivery.png" alt="" />
+            <h3>FREE AND FAST DELIVERY</h3>
+            <p>Free delivery for all orders over $140</p>
+          </div>
+          <div>
+            <img src="/home/headphone.png" alt="" />
+            <h3>24/7 CUSTOMER SERVICE</h3>
+            <p>Friendly 24/7 customer support</p>
+          </div>
+          <div>
+            <img src="/home/guarante.png" alt="" />
+            <h3>MONEY BACK GUARANTEE</h3>
+            <p>We reurn money within 30 days</p>
+          </div>
+        </div>
+        <div className="arrow_slide_top" onClick={scrollToTop}>
+          <img src="/home/arrow-up.svg" alt="" />
+        </div>
       </div>
     </>
   );
