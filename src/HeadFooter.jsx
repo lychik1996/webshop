@@ -97,19 +97,19 @@ export default function HeadFooter() {
                     }
                   >
                     <li>
-                      <Link>
+                      <Link to='/account/profile'>
                         <img src="/headfooter/user/user.svg" alt="" />
                         <p>Manage My Account</p>
                       </Link>
                     </li>
                     <li>
-                      <Link to="basket">
+                      <Link to="/basket">
                         <img src="/headfooter/user/order.svg" alt="" />
                         <p>My Order</p>
                       </Link>
                     </li>
                     <li>
-                      <Link>
+                      <Link to='/account/myCancellation'>
                         <img src="/headfooter/user/cancellations.svg" alt="" />
                         <p>My Cancellations</p>
                       </Link>
