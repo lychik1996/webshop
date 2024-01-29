@@ -1,5 +1,7 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
+import { useLoadBasketQuery } from './store/api/apiBasket';
+import { useLoadWishListQuery } from './store/api/apiWish';
 
 export default function HeadFooter() {
   const [activeUser, setActiveUser] = useState(false); //user menu
@@ -31,6 +33,8 @@ export default function HeadFooter() {
     //user menu
     setActiveUser(false);
   };
+  const {data:basketList} = useLoadBasketQuery();
+  const {data:wishList} = useLoadWishListQuery();
   return (
     <>
       <div className="all">
@@ -79,11 +83,13 @@ export default function HeadFooter() {
                 <li>
                   <Link to="wishList">
                     <img src="/headfooter/Wishlist.svg" alt="" />
+                    {wishList?.length>0 && <div className='countWishList'>{wishList.length}</div>}
                   </Link>
                 </li>
                 <li>
                   <Link to="basket">
                     <img src="/headfooter/Cart1.svg" alt="" />
+                    {basketList?.length>0 && <div className='countBasket'>{basketList.reduce((acum,item)=>acum+item.count,0)}</div>}
                   </Link>
                 </li>
                 <li onClick={handleMouseEnter} onMouseLeave={handleMouseLeave}>

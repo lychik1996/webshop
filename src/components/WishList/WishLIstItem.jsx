@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
-export default function WishListItem({ item }) {
+import { useDeleteInWishListMutation } from "../../store/api/apiWish";
+
+export default function WishListItem({ item}) {
+  const [deleteItem]=useDeleteInWishListMutation();
   return (
     <>
       <li>
@@ -8,7 +11,7 @@ export default function WishListItem({ item }) {
             {item.discount > 0 && <p className="discount">-{item.discount}%</p>}
             {item.new && <p className="new">NEW</p>}
 
-            <div>
+            <div onClick={()=>deleteItem(item.id)}>
               <img src="/wishList/icon-delete.svg" className="delete" alt="" />
             </div>
             <Link to={`/${item.name}`}>

@@ -1,14 +1,16 @@
 import { useState } from "react";
+import { useChangeCountBasketMutation, useDeleteInBasketMutation } from "../../store/api/apiBasket";
 
-export default function BasketItem({item}) {
-    const [count,setCount]=useState(1);
-    
+export default function BasketItem({ item }) {
+  const [deleteInBasket] = useDeleteInBasketMutation();
+  const [changeCount] = useChangeCountBasketMutation();
 
   return (
     <>
       <li>
         <div className="basket_product_imgs">
           <img
+            onClick={() => deleteInBasket(item.id)}
             className="basket_product-cancel"
             src="/basket/icon-cancel.svg"
             alt=""
@@ -18,17 +20,34 @@ export default function BasketItem({item}) {
             alt=""
             style={{ maxWidth: 54, maxHeight: 54 }}
           />
-          <p>LCD Monitor</p>
+          <p>{item.name}</p>
         </div>
         <p className="basket_product_price">${item.price}</p>
         <div className="basket_product_quantity">
-          <input type="text" value={count<10?`0${count}`:count} onChange={(e)=>count>=0 && setCount(Number(e.target.value))} />
+          <input
+            type="text"
+            value={item.count < 10 ? `0${item.count}` : item.count}
+            onChange={(e) => {
+              const newCount = Number(e.target.value);
+              changeCount({ id: item.id, count: newCount });
+            }}
+          />
           <div>
-            <img src="/basket/Drop-Up-Small.svg" alt="" onClick={()=>setCount(count+1)} />
-            <img src="/basket/Drop-Down-Small.svg" alt=""onClick={()=>count>1 && setCount(count-1)} />
+            <img
+              src="/basket/Drop-Up-Small.svg"
+              alt=""
+              onClick={() => changeCount({ id: item.id, count: item.count + 1 })}
+            />
+            <img
+              src="/basket/Drop-Down-Small.svg"
+              alt=""
+              onClick={() =>
+                item.count > 1 && changeCount({ id: item.id, count: item.count - 1 })
+              }
+            />
           </div>
         </div>
-        <p className="basket_product_prices">${item.price*count}</p>
+        <p className="basket_product_prices">${item.price * item.count}</p>
       </li>
     </>
   );

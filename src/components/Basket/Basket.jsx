@@ -3,28 +3,32 @@ import BasketItem from './BasketItem';
 import './basket.scss';
 import { Link} from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useLoadBasketQuery } from '../../store/api/apiBasket';
 
-const data = [
-    {
-        id:1,
-        name:"LCD Monitor",
-        price:'650',
-    },
-    {
-        id:2,
-        name:"H1 Gamepad",
-        price:'550',
-    }
-]
+// const data = [
+//     {
+//         id:1,
+//         name:"LCD Monitor",
+//         price:'650',
+//     },
+//     {
+//         id:2,
+//         name:"H1 Gamepad",
+//         price:'550',
+//     }
+// ]
 export default function Basket() {
   
-    const [item,setItem]=useState(data);
+    // const [item,setItem]=useState(data);
     const {handleSubmit,register,reset}=useForm();
+    const {data}=useLoadBasketQuery();
     const handleCode=(code)=>{
       console.log(code);
       reset();
     }
-
+    console.log(data);
+    const totalSum=data?.reduce((acum,item)=>acum+item.count*item.price,0);
+    
   return (
     <>
       <div className="container">
@@ -45,7 +49,7 @@ export default function Basket() {
             <p>Quantity</p>
             <p>Subtotal</p>
           </li>
-          {item.map((item,index)=>(
+          {data?.map((item,index)=>(
             <BasketItem key={index} item={item}/>
           ))}
         </ul>
@@ -62,7 +66,7 @@ export default function Basket() {
             <h2>Cart Total</h2>
             <div className="basket_subtotal">
               <p>Subtotal:</p>
-              <p>$1750</p>
+              <p>${totalSum}</p>
             </div>
             <div className='string'></div>
             <div className="basket_shipping">
@@ -72,7 +76,7 @@ export default function Basket() {
             <div className='string'></div>
             <div className="basket_all">
               <p>Total:</p>
-              <p>$1750</p>
+              <p>${totalSum}</p>
             </div>
             <Link>Procees to checkout</Link>
           </div>

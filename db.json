@@ -5,27 +5,66 @@
       "name": "Havic HV G-92 Gamepad",
       "category": "Gaming",
       "description": "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressuresensitive.",
-      "imgsL": ["1l.png", "2l.png", "3l.png", "4l.png"],
-      "imgsS": ["1s.png", "2s.png", "3s.png", "4s.png"],
+      "imgsL": [
+        "1l.png",
+        "2l.png",
+        "3l.png",
+        "4l.png"
+      ],
+      "imgsS": [
+        "1s.png",
+        "2s.png",
+        "3s.png",
+        "4s.png"
+      ],
       "price": 192,
       "rating": 3,
       "reviews": 150,
-      "colour": ["rgba(160, 188, 224, 1)", "rgba(224, 117, 117, 1)"],
-      "sizes": ["XS", "S", "M", "L", "XL"]
+      "colour": [
+        "rgba(160, 188, 224, 1)",
+        "rgba(224, 117, 117, 1)"
+      ],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
     },
     {
-     "id": 2,
+      "id": 2,
       "name": "ASUS FHD Gaming Laptop",
       "category": "Gaming",
       "description": "gaming laptope for u u can use asdfsadfadf sdfjksdjfkjaosjf ekfpokewor  dsfk podskf wekoewk fokds wek foewkf d",
-      "imgsL": ["1l.png", "2l.png", "3l.png", "4l.png"],
-      "imgsS": ["1s.png", "2s.png", "3s.png", "4s.png"],
+      "imgsL": [
+        "1l.png",
+        "2l.png",
+        "3l.png",
+        "4l.png"
+      ],
+      "imgsS": [
+        "1s.png",
+        "2s.png",
+        "3s.png",
+        "4s.png"
+      ],
       "price": 900,
       "rating": 5,
       "reviews": 40,
-      "colour": ["rgba(160, 188, 224, 1)", "rgba(224, 117, 117, 1)","silver","black"],
-      "sizes": ["15.5", "16", "19", "20","22"]
-
+      "colour": [
+        "rgba(160, 188, 224, 1)",
+        "rgba(224, 117, 117, 1)",
+        "silver",
+        "black"
+      ],
+      "sizes": [
+        "15.5",
+        "16",
+        "19",
+        "20",
+        "22"
+      ]
     }
   ],
   "staffs": [
@@ -46,6 +85,20 @@
       "img": "/about/staff3.png",
       "name": "Will Smith",
       "info": "Product Designe"
+    }
+  ],
+  "wishList": [],
+  "basket": [
+    {
+      "id": "a6fe",
+      "name": "HAVIT HV-G92 Gamepad",
+      "nav": "sale",
+      "category": "Gaming",
+      "price": 120,
+      "discount": 35,
+      "new": false,
+      "rating": 4,
+      "count": 1
     }
   ]
 }

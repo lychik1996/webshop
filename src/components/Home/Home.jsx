@@ -16,6 +16,7 @@ const saleAPi = [
     discount: 35,
     new: false,
     rating: 4,
+    count:1,
   },
   {
     id: 2,
@@ -26,6 +27,7 @@ const saleAPi = [
     discount: 0,
     new: false,
     rating: 3,
+    count:1,
   },
   {
     id: 3,
@@ -36,6 +38,7 @@ const saleAPi = [
     discount: 0,
     new: true,
     rating: 5,
+    count:1,
   },
   {
     id: 4,
@@ -46,6 +49,7 @@ const saleAPi = [
     discount: 0,
     new: false,
     rating: 2,
+    count:1,
   },
 ];
 const bestAPI = [
@@ -58,6 +62,7 @@ const bestAPI = [
     discount: 35,
     new: false,
     rating: 4,
+    count:1,
   },
   {
     id: 2,
@@ -68,6 +73,7 @@ const bestAPI = [
     discount: 0,
     new: false,
     rating: 3,
+    count:1,
   },
   {
     id: 3,
@@ -78,6 +84,7 @@ const bestAPI = [
     discount: 0,
     new: true,
     rating: 5,
+    count:1,
   },
   {
     id: 4,
@@ -88,6 +95,7 @@ const bestAPI = [
     discount: 0,
     new: false,
     rating: 2,
+    count:1,
   },
 ];
 const exploreAPI = [
@@ -100,6 +108,7 @@ const exploreAPI = [
     discount: 35,
     new: false,
     rating: 4,
+    count:1,
   },
   {
     id: 2,
@@ -110,6 +119,7 @@ const exploreAPI = [
     discount: 0,
     new: false,
     rating: 3,
+    count:1,
   },
   {
     id: 3,
@@ -120,6 +130,7 @@ const exploreAPI = [
     discount: 0,
     new: true,
     rating: 5,
+    count:1,
   },
   {
     id: 4,
@@ -130,6 +141,7 @@ const exploreAPI = [
     discount: 0,
     new: false,
     rating: 2,
+    count:1,
   },
   {
     id: 5,
@@ -141,6 +153,7 @@ const exploreAPI = [
     new: false,
     rating: 4,
     colour: ['blue', 'red', 'gold','green'],
+    count:1,
   },
   {
     id: 6,
@@ -152,6 +165,7 @@ const exploreAPI = [
     new: false,
     rating: 3,
     colour: ['grey', 'red'],
+    count:1,
   },
   {
     id: 7,
@@ -163,6 +177,7 @@ const exploreAPI = [
     new: true,
     rating: 5,
     colour: ['green', 'red'],
+    count:1,
   },
   {
     id: 8,
@@ -174,6 +189,7 @@ const exploreAPI = [
     new: false,
     rating: 2,
     colour: ['green', 'red'],
+    count:1,
   },
 ];
 export default function Home() {
