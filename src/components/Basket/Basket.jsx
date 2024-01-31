@@ -78,7 +78,7 @@ export default function Basket() {
               <p>Total:</p>
               <p>${totalSum}</p>
             </div>
-            <Link>Procees to checkout</Link>
+            <Link to='/basket/checkout'>Procees to checkout</Link>
           </div>
         </div>
       </div>

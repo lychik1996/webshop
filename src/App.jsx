@@ -17,6 +17,7 @@ const CreateAccount = lazy(() =>
 );
 const WishList = lazy(() => import('./components/WishList/WishList'));
 const Basket = lazy(() => import('./components/Basket/Basket'));
+const CheckOut= lazy(()=>import('./components/Basket/Checkout/CheckOut'));
 
 const Account =lazy(()=>import('./components/Account/Account'));
 const Profile = lazy(()=>import('./components/Account/Profile/Profile'));
@@ -39,6 +40,7 @@ function App() {
         <Route path="/createAccount" element={<CreateAccount />} />
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/basket" element={<Basket />} />
+        <Route path='/basket/checkout' element={<CheckOut/>}/>
         <Route path='/account' element={<Account/>}>
           <Route path='/account/profile' element={<Profile/>}/>
           <Route path='/account/adressBook' element={<AdressBook/>}/>
