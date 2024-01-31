@@ -211,20 +211,24 @@ export default function Home() {
   const [curISliderHead, setCurISliderHead] = useState(0);
   useEffect(() => {
     const loadSliderHead = async () => {
-       const response = await fetch('http://localhost:3001/sliderHead')
-        const data =  await response.json();
-        setSliderHead(data);
-        setCurISliderHead(Math.floor(data.length / 2));
+      const response = await fetch('http://localhost:3001/sliderHead');
+      const data = await response.json();
+      setSliderHead(data);
+      setCurISliderHead(Math.floor(data.length / 2));
     };
     loadSliderHead();
   }, []);
-  const clickSliderHeadLeft=()=>{
-   setCurISliderHead((prevIndex)=>prevIndex===0?sliderHead.length-1:prevIndex-1);
-  }
-  const clickSliderHeadRight=()=>{
-    setCurISliderHead((prevIndex)=>prevIndex===sliderHead.length-1?0:prevIndex+1);
-  }
-  
+  const clickSliderHeadLeft = () => {
+    setCurISliderHead((prevIndex) =>
+      prevIndex === 0 ? sliderHead.length - 1 : prevIndex - 1
+    );
+  };
+  const clickSliderHeadRight = () => {
+    setCurISliderHead((prevIndex) =>
+      prevIndex === sliderHead.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
   return (
     <>
       <div className="container">
@@ -265,10 +269,19 @@ export default function Home() {
             </ul>
           </aside>
           <div className="slider_container">
-            <div className="slider_left" onClick={()=>clickSliderHeadLeft()}></div>
-            <div className="slider_right"onClick={()=>clickSliderHeadRight()}></div>
+            <div
+              className="slider_left"
+              onClick={() => clickSliderHeadLeft()}
+            ></div>
+            <div
+              className="slider_right"
+              onClick={() => clickSliderHeadRight()}
+            ></div>
             <div className="slider">
-              <div className="slider_items" style={{transform : `translateX(${-curISliderHead*892}px)`}}>
+              <div
+                className="slider_items"
+                style={{ transform: `translateX(${-curISliderHead * 892}px)` }}
+              >
                 {sliderHead?.map((item) => (
                   <div className="slider_item" key={item.id}>
                     <div className="slider_item_left">
@@ -292,8 +305,17 @@ export default function Home() {
               </div>
             </div>
             <div className="slider_navigate">
-              {sliderHead?.map((item,index)=>(
-                <img src={index===curISliderHead?`/home/Ellipse 2.svg`:`/home/Ellipse 1.svg`} alt="" key={item.id} onClick={()=>setCurISliderHead(index)} />
+              {sliderHead?.map((item, index) => (
+                <img
+                  src={
+                    index === curISliderHead
+                      ? `/home/Ellipse 2.svg`
+                      : `/home/Ellipse 1.svg`
+                  }
+                  alt=""
+                  key={item.id}
+                  onClick={() => setCurISliderHead(index)}
+                />
               ))}
             </div>
           </div>
@@ -306,7 +328,7 @@ export default function Home() {
           <div className="nav_home_bot">
             <div className="nav_home_bot_left">
               <h1 className="nav_home_bot_text">Flash Sales</h1>
-              <SaleTimer/>
+              <SaleTimer />
             </div>
             <div className="nav_home_bot_arrows">
               <div>
@@ -319,13 +341,15 @@ export default function Home() {
           </div>
         </div>
         <div className="sale">
-          <ul className="sale_items">
-            {sale.length > 1
-              ? sale.map((item) => <HomeItem key={item.id} item={item} />)
-              : new Array(4)
-                  .fill(1)
-                  .map((_, index) => <PreHomeItem key={index} />)}
-          </ul>
+          <div className="slider">
+            <ul className="sale_items">
+              {sale.length > 1
+                ? sale.map((item) => <HomeItem key={item.id} item={item} />)
+                : new Array(4)
+                    .fill(1)
+                    .map((_, index) => <PreHomeItem key={index} />)}
+            </ul>
+          </div>
           <Link className="sale_all">View All Products</Link>
         </div>
         <div className="nav_home">
@@ -406,7 +430,7 @@ export default function Home() {
             <h2 className="advertising_left_name">
               Enhance Your Music Experience
             </h2>
-            <AdvenceTimer/>
+            <AdvenceTimer />
             <p className="advertising_left_btn">Buy Now!</p>
           </div>
           <div className="advertising_right"></div>
@@ -432,6 +456,7 @@ export default function Home() {
           </div>
         </div>
         <div className="explore">
+          <div className='slider'>
           <ul className="explore_items">
             {sale.length > 1
               ? explore.map((item) => <HomeItem key={item.id} item={item} />)
@@ -439,6 +464,7 @@ export default function Home() {
                   .fill(1)
                   .map((_, index) => <PreHomeItem key={index} />)}
           </ul>
+          </div>
           <Link className="explore_all">View All Products</Link>
         </div>
         <div className="nav_home">
