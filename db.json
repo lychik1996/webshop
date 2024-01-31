@@ -88,17 +88,22 @@
     }
   ],
   "wishList": [],
-  "basket": [
+  "basket": [],
+  "sliderHead": [
     {
-      "id": "a6fe",
-      "name": "HAVIT HV-G92 Gamepad",
-      "nav": "sale",
-      "category": "Gaming",
-      "price": 120,
-      "discount": 35,
-      "new": false,
-      "rating": 4,
-      "count": 1
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
     }
   ]
 }

@@ -16,7 +16,7 @@ export default function BasketItem({ item }) {
             alt=""
           />
           <img
-            src={`/basket/products/${item.id}.png`}
+            src={`/products/${item.name}.png`}
             alt=""
             style={{ maxWidth: 54, maxHeight: 54 }}
           />

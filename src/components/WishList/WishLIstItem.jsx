@@ -1,8 +1,22 @@
 import { Link } from "react-router-dom";
 import { useDeleteInWishListMutation } from "../../store/api/apiWish";
+import { useAddInBasketMutation, useChangeCountBasketMutation, useLoadBasketQuery } from "../../store/api/apiBasket";
 
 export default function WishListItem({ item}) {
   const [deleteItem]=useDeleteInWishListMutation();
+  const [addInBasket]=useAddInBasketMutation();
+  const {data}= useLoadBasketQuery();
+  const [changeCount]=useChangeCountBasketMutation();
+  const addToBasket=()=>{
+    if(data?.some((i)=>i.name===item.name)){
+      const elem = data?.find((i)=>i.name===item.name);
+      changeCount({id:elem.id,count:elem.count+1})
+    }else{
+      const itemWithOutId = {...item};
+    delete itemWithOutId.id;
+    addInBasket(itemWithOutId);
+    }
+  }
   return (
     <>
       <li>
@@ -16,14 +30,14 @@ export default function WishListItem({ item}) {
             </div>
             <Link to={`/${item.name}`}>
             <img
-              src={`/wishList/products/${item.id}.png`}
+              src={`/products/${item.name}.png`}
               className="item"
               alt=""
             />
             </Link>
           </div>
         
-        <div className="wishList_item_btn">
+        <div className="wishList_item_btn" onClick={()=>addToBasket()}>
           <img src="/wishList/cart.svg" alt="" />
           <p>Add To Cart</p>
         </div>

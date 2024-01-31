@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import HomeItem from './HomeItem/HomeItem';
 import './home.scss';
 import { Link } from 'react-router-dom';
 import PreHomeItem from './HomeItem/PreHomeItem';
 
-const customStartDate = '2024-01-29T12:00:00';
+const customStartDate = '2024-02-29T12:00:00';
 const StartDateAdv = '2024-02-03T12:00:00';
 const saleAPi = [
   {
@@ -16,40 +16,40 @@ const saleAPi = [
     discount: 35,
     new: false,
     rating: 4,
-    count:1,
+    count: 1,
   },
   {
     id: 2,
-    name: 'IPS LCD Gaming Monitor',
+    name: 'AK-900 Wired Keyboard',
     nav: 'sale',
     category: 'Gaming',
     price: 1960,
     discount: 0,
     new: false,
     rating: 3,
-    count:1,
+    count: 1,
   },
   {
     id: 3,
-    name: 'HAVIT HV-G92 Gamepad',
+    name: 'IPS LCD Gaming Monitor',
     nav: 'sale',
     category: 'Gaming',
     price: 550,
     discount: 0,
     new: true,
     rating: 5,
-    count:1,
+    count: 1,
   },
   {
     id: 4,
-    name: 'AK-900 Wired Keyboard',
+    name: 'S-Series Comfort Chair',
     nav: 'sale',
     category: 'Gaming',
     price: 750,
     discount: 0,
     new: false,
     rating: 2,
-    count:1,
+    count: 1,
   },
 ];
 const bestAPI = [
@@ -62,102 +62,102 @@ const bestAPI = [
     discount: 35,
     new: false,
     rating: 4,
-    count:1,
+    count: 1,
   },
   {
     id: 2,
-    name: 'IPS LCD Gaming Monitor',
+    name: 'Gucci duffle bag',
     nav: 'best',
     category: 'Gaming',
     price: 1960,
     discount: 0,
     new: false,
     rating: 3,
-    count:1,
+    count: 1,
   },
   {
     id: 3,
-    name: 'HAVIT HV-G92 Gamepad',
+    name: 'RGB liquid CPU Cooler',
     nav: 'best',
     category: 'Gaming',
     price: 550,
     discount: 0,
     new: true,
     rating: 5,
-    count:1,
+    count: 1,
   },
   {
     id: 4,
-    name: 'AK-900 Wired Keyboard',
+    name: 'Small BookSelf',
     nav: 'best',
     category: 'Gaming',
     price: 750,
     discount: 0,
     new: false,
     rating: 2,
-    count:1,
+    count: 1,
   },
 ];
 const exploreAPI = [
   {
     id: 1,
-    name: 'The north coat',
+    name: 'Breed Dry Dog Food',
     nav: 'explore',
     category: 'Gaming',
     price: 120,
     discount: 35,
     new: false,
     rating: 4,
-    count:1,
+    count: 1,
   },
   {
     id: 2,
-    name: 'IPS LCD Gaming Monitor',
+    name: 'CANON EOS DSLR Camera',
     nav: 'explore',
     category: 'Gaming',
     price: 1960,
     discount: 0,
     new: false,
     rating: 3,
-    count:1,
+    count: 1,
   },
   {
     id: 3,
-    name: 'HAVIT HV-G92 Gamepad',
+    name: 'ASUS FHD Gaming Laptop',
     nav: 'explore',
     category: 'Gaming',
     price: 550,
     discount: 0,
     new: true,
     rating: 5,
-    count:1,
+    count: 1,
   },
   {
     id: 4,
-    name: 'AK-900 Wired Keyboard',
+    name: 'Curology Product Set',
     nav: 'explore',
     category: 'Gaming',
     price: 750,
     discount: 0,
     new: false,
     rating: 2,
-    count:1,
+    count: 1,
   },
   {
     id: 5,
-    name: 'The north coat',
+    name: 'Kids Electric Car',
     nav: 'explore',
     category: 'Gaming',
     price: 120,
     discount: 35,
     new: false,
     rating: 4,
-    colour: ['blue', 'red', 'gold','green'],
-    count:1,
+    colour: ['blue', 'red', 'gold', 'green'],
+    count: 1,
   },
   {
     id: 6,
-    name: 'IPS LCD Gaming Monitor',
+    name: 'Jr. Zoom Soccer Cleats',
     nav: 'explore',
     category: 'Gaming',
     price: 1960,
@@ -165,11 +165,11 @@ const exploreAPI = [
     new: false,
     rating: 3,
     colour: ['grey', 'red'],
-    count:1,
+    count: 1,
   },
   {
     id: 7,
-    name: 'HAVIT HV-G92 Gamepad',
+    name: 'GP11 Shooter USB Gamepad',
     nav: 'explore',
     category: 'Gaming',
     price: 550,
@@ -177,11 +177,11 @@ const exploreAPI = [
     new: true,
     rating: 5,
     colour: ['green', 'red'],
-    count:1,
+    count: 1,
   },
   {
     id: 8,
-    name: 'AK-900 Wired Keyboard',
+    name: 'Quilted Satin Jacket',
     nav: 'explore',
     category: 'Gaming',
     price: 750,
@@ -189,7 +189,7 @@ const exploreAPI = [
     new: false,
     rating: 2,
     colour: ['green', 'red'],
-    count:1,
+    count: 1,
   },
 ];
 export default function Home() {
@@ -208,6 +208,7 @@ export default function Home() {
     minutes: 0,
     seconds: 0,
   });
+
   //for useEffect Date
   const timerIntervalFunc = (startDate, setEffect) => {
     const timerInterval = setInterval(() => {
@@ -221,19 +222,8 @@ export default function Home() {
       }
     }, 1000);
   };
-  //useEffect Date
-  useEffect(() => {
-    const startDate = new Date(customStartDate);
-    timerIntervalFunc(startDate, setTimeSales);
-    return () => clearInterval(timerIntervalFunc);
-  }, []);
-  useEffect(() => {
-    const startDate = new Date(StartDateAdv);
-    timerIntervalFunc(startDate, setTimeAdv);
-    return () => clearInterval(timerIntervalFunc);
-  }, []);
   //calculate Date
-  const calculateTimeRemaining = (elapsedTime) => {
+  const calculateTimeRemaining = useMemo(() => (elapsedTime) => {
     const remainingSeconds = Math.floor(elapsedTime / 1000);
 
     const days = Math.floor(remainingSeconds / (24 * 60 * 60));
@@ -247,7 +237,19 @@ export default function Home() {
       minutes,
       seconds,
     };
-  };
+  }, []);
+  //useEffect Date
+  useEffect(() => {
+    const startDate = new Date(customStartDate);
+    timerIntervalFunc(startDate, setTimeSales);
+    return () => clearInterval(timerIntervalFunc);
+  }, []);
+  useEffect(() => {
+    const startDate = new Date(StartDateAdv);
+    timerIntervalFunc(startDate, setTimeAdv);
+    return () => clearInterval(timerIntervalFunc);
+  }, []);
+
   //smooth scroll btn
   const scrollToTop = () => {
     window.scrollTo({
@@ -256,6 +258,25 @@ export default function Home() {
     });
   };
 
+  //sliderHead
+  const [sliderHead, setSliderHead] = useState([]);
+  const [curISliderHead, setCurISliderHead] = useState(0);
+  useEffect(() => {
+    const loadSliderHead = async () => {
+       const response = await fetch('http://localhost:3001/sliderHead')
+        const data =  await response.json();
+        setSliderHead(data);
+        setCurISliderHead(Math.floor(data.length / 2));
+    };
+    loadSliderHead();
+  }, []);
+  const clickSliderHeadLeft=()=>{
+   setCurISliderHead((prevIndex)=>prevIndex===0?sliderHead.length-1:prevIndex-1);
+  }
+  const clickSliderHeadRight=()=>{
+    setCurISliderHead((prevIndex)=>prevIndex===sliderHead.length-1?0:prevIndex+1);
+  }
+  
   return (
     <>
       <div className="container">
@@ -296,32 +317,36 @@ export default function Home() {
             </ul>
           </aside>
           <div className="slider_container">
+            <div className="slider_left" onClick={()=>clickSliderHeadLeft()}></div>
+            <div className="slider_right"onClick={()=>clickSliderHeadRight()}></div>
             <div className="slider">
-              <div className="slider_item">
-                <div className="slider_item_left">
-                  <div className="slider_item_left-top">
-                    <img src="/home/AppleLogo.png" alt="" />
-                    <p>iPhone 14 Series</p>
+              <div className="slider_items" style={{transform : `translateX(${-curISliderHead*892}px)`}}>
+                {sliderHead?.map((item) => (
+                  <div className="slider_item" key={item.id}>
+                    <div className="slider_item_left">
+                      <div className="slider_item_left-top">
+                        <img src="/home/AppleLogo.png" alt="" />
+                        <p>iPhone 14 Series</p>
+                      </div>
+                      <h3>Up to 10% off Voucher</h3>
+                      <div className="slider_item_left-bot">
+                        <p>Shop Now</p>
+                        <img src="/home/white arrow-right.svg" alt="" />
+                      </div>
+                    </div>
+                    <img
+                      className="slider_item_right"
+                      src="/home/phonelogo.png"
+                      alt=""
+                    />
                   </div>
-                  <h3>Up to 10% off Voucher</h3>
-                  <div className="slider_item_left-bot">
-                    <p>Shop Now</p>
-                    <img src="/home/white arrow-right.svg" alt="" />
-                  </div>
-                </div>
-                <img
-                  className="slider_item_right"
-                  src="/home/phonelogo.png"
-                  alt=""
-                />
+                ))}
               </div>
             </div>
             <div className="slider_navigate">
-              <img src="/home/Ellipse 1.svg" alt="" />
-              <img src="/home/Ellipse 1.svg" alt="" />
-              <img src="/home/Ellipse 2.svg" alt="" />
-              <img src="/home/Ellipse 1.svg" alt="" />
-              <img src="/home/Ellipse 1.svg" alt="" />
+              {sliderHead?.map((item,index)=>(
+                <img src={index===curISliderHead?`/home/Ellipse 2.svg`:`/home/Ellipse 1.svg`} alt="" key={item.id} onClick={()=>setCurISliderHead(index)} />
+              ))}
             </div>
           </div>
         </div>
@@ -500,7 +525,7 @@ export default function Home() {
           <div className="advertising_right"></div>
           <img src="/home/jbl.png" alt="" />
         </div>
-        
+
         <div className="nav_home">
           <div className="nav_home_top">
             <div className="nav_home_top_block"></div>
@@ -545,7 +570,9 @@ export default function Home() {
           <div className="arrival_left">
             <div className="group_text">
               <p className="name">PlayStation 5</p>
-              <p className="overview">Black and White version of the PS5 coming out on sale.</p>
+              <p className="overview">
+                Black and White version of the PS5 coming out on sale.
+              </p>
               <p className="shop_now">Shop Now</p>
             </div>
             <img src="/home/ps5.png" alt="" />
@@ -554,7 +581,9 @@ export default function Home() {
             <div className="arrival_right_top">
               <div className="group_text">
                 <p className="name">Women’s Collections</p>
-                <p className="overview">Featured woman collections that give you another vibe.</p>
+                <p className="overview">
+                  Featured woman collections that give you another vibe.
+                </p>
                 <p className="shop_now">Shop Now</p>
               </div>
               <img src="/home/woman.png" alt="" />
@@ -566,7 +595,7 @@ export default function Home() {
                   <p className="overview">Amazon wireless speakers</p>
                   <p className="shop_now">Shop Now</p>
                 </div>
-                <div className='fill'></div>
+                <div className="fill"></div>
                 <img src="/home/likejbl.png" alt="" />
               </div>
               <div className="arrival_right_bot_right">
@@ -575,7 +604,7 @@ export default function Home() {
                   <p className="overview">GUCCI INTENSE OUD EDP</p>
                   <p className="shop_now">Shop Now</p>
                 </div>
-                <div className='fill'></div>
+                <div className="fill"></div>
                 <img src="/home/guchi.png" alt="" />
               </div>
             </div>
