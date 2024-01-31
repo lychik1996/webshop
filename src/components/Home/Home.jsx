@@ -3,6 +3,8 @@ import HomeItem from './HomeItem/HomeItem';
 import './home.scss';
 import { Link } from 'react-router-dom';
 import PreHomeItem from './HomeItem/PreHomeItem';
+import SaleTimer from './SaleTimer';
+import AdvenceTimer from './AdvenceTimer';
 
 const customStartDate = '2024-02-29T12:00:00';
 const StartDateAdv = '2024-02-03T12:00:00';
@@ -358,39 +360,7 @@ export default function Home() {
           <div className="nav_home_bot">
             <div className="nav_home_bot_left">
               <h1 className="nav_home_bot_text">Flash Sales</h1>
-              <div className="nav_home_bot_time">
-                <div>
-                  <p className="name">Days</p>
-                  <p className="time">
-                    {timeSales.days < 10 && '0'}
-                    {timeSales.days}
-                  </p>
-                </div>
-                <p className="dought">:</p>
-                <div>
-                  <p className="name">Hours</p>
-                  <p className="time">
-                    {timeSales.hours < 10 && '0'}
-                    {timeSales.hours}
-                  </p>
-                </div>
-                <p className="dought">:</p>
-                <div>
-                  <p className="name">Minutes</p>
-                  <p className="time">
-                    {timeSales.minutes < 10 && '0'}
-                    {timeSales.minutes}
-                  </p>
-                </div>
-                <p className="dought">:</p>
-                <div>
-                  <p className="name">Seconds</p>
-                  <p className="time">
-                    {timeSales.seconds < 10 && '0'}
-                    {timeSales.seconds}
-                  </p>
-                </div>
-              </div>
+              <SaleTimer/>
             </div>
             <div className="nav_home_bot_arrows">
               <div>
@@ -490,36 +460,7 @@ export default function Home() {
             <h2 className="advertising_left_name">
               Enhance Your Music Experience
             </h2>
-            <div className="advertising_left_timer">
-              <div className="advertising_left_time">
-                <p className="time">
-                  {timeAdv.days < 10 && '0'}
-                  {timeAdv.days}
-                </p>
-                <p className="name">Days</p>
-              </div>
-              <div className="advertising_left_time">
-                <p className="time">
-                  {timeAdv.hours < 10 && '0'}
-                  {timeAdv.hours}
-                </p>
-                <p className="name">Hours</p>
-              </div>
-              <div className="advertising_left_time">
-                <p className="time">
-                  {timeAdv.minutes < 10 && '0'}
-                  {timeAdv.minutes}
-                </p>
-                <p className="name">Minutes</p>
-              </div>
-              <div className="advertising_left_time">
-                <p className="time">
-                  {timeAdv.seconds < 10 && '0'}
-                  {timeAdv.seconds}
-                </p>
-                <p className="name">Seconds</p>
-              </div>
-            </div>
+            <AdvenceTimer/>
             <p className="advertising_left_btn">Buy Now!</p>
           </div>
           <div className="advertising_right"></div>
