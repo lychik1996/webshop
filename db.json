@@ -87,6 +87,282 @@
       "info": "Product Designe"
     }
   ],
+  "flashSales": [
+    {
+      "id": 1,
+      "name": "HAVIT HV-G92 Gamepad",
+      "nav": "sale",
+      "category": "Gaming",
+      "price": 120,
+      "discount": 35,
+      "new": false,
+      "rating": 4,
+      "count": 1
+    },
+    {
+      "id": 2,
+      "name": "AK-900 Wired Keyboard",
+      "nav": "sale",
+      "category": "Gaming",
+      "price": 1960,
+      "discount": 0,
+      "new": false,
+      "rating": 3,
+      "count": 1
+    },
+    {
+      "id": 3,
+      "name": "IPS LCD Gaming Monitor",
+      "nav": "sale",
+      "category": "Gaming",
+      "price": 550,
+      "discount": 0,
+      "new": true,
+      "rating": 5,
+      "count": 1
+    },
+    {
+      "id": 4,
+      "name": "S-Series Comfort Chair",
+      "nav": "sale",
+      "category": "Gaming",
+      "price": 750,
+      "discount": 0,
+      "new": false,
+      "rating": 2,
+      "count": 1
+    },
+    {
+      "id": 5,
+      "name": "The north coat",
+      "nav": "sale",
+      "category": "Gaming",
+      "price": 120,
+      "discount": 35,
+      "new": false,
+      "rating": 4,
+      "count": 1
+    },
+    {
+      "id": 6,
+      "name": "AK-900 Wired Keyboard",
+      "nav": "sale",
+      "category": "Gaming",
+      "price": 1960,
+      "discount": 0,
+      "new": false,
+      "rating": 3,
+      "count": 1
+    },
+    {
+      "id": 7,
+      "name": "IPS LCD Gaming Monitor",
+      "nav": "sale",
+      "category": "Gaming",
+      "price": 550,
+      "discount": 0,
+      "new": true,
+      "rating": 5,
+      "count": 1
+    },
+    {
+      "id": 8,
+      "name": "S-Series Comfort Chair",
+      "nav": "sale",
+      "category": "Gaming",
+      "price": 750,
+      "discount": 0,
+      "new": false,
+      "rating": 2,
+      "count": 1
+    }
+  ],
+  "explore":[
+    {
+      "id": 1,
+      "name": "Breed Dry Dog Food",
+      "nav": "explore",
+      "category": "Gaming",
+      "price": 120,
+      "discount": 35,
+      "new": false,
+      "rating": 4,
+      "count": 1
+    },
+    {
+      "id": 2,
+      "name": "CANON EOS DSLR Camera",
+      "nav": "explore",
+      "category": "Gaming",
+      "price": 1960,
+      "discount": 0,
+      "new": false,
+      "rating": 3,
+      "count": 1
+    },
+    {
+      "id": 3,
+      "name": "ASUS FHD Gaming Laptop",
+      "nav": "explore",
+      "category": "Gaming",
+      "price": 550,
+      "discount": 0,
+      "new": true,
+      "rating": 5,
+      "count": 1
+    },
+    {
+      "id": 4,
+      "name": "Curology Product Set",
+      "nav": "explore",
+      "category": "Gaming",
+      "price": 750,
+      "discount": 0,
+      "new": false,
+      "rating": 2,
+      "count": 1
+    },
+    {
+      "id": 5,
+      "name": "Kids Electric Car",
+      "nav": "explore",
+      "category": "Gaming",
+      "price": 120,
+      "discount": 35,
+      "new": false,
+      "rating": 4,
+      "colour": ["blue", "red", "gold", "green"],
+      "count": 1
+    },
+    {
+      "id": 6,
+      "name": "Jr. Zoom Soccer Cleats",
+      "nav": "explore",
+      "category": "Gaming",
+      "price": 1960,
+      "discount": 0,
+      "new": false,
+      "rating": 3,
+      "colour": ["grey", "red"],
+      "count": 1
+    },
+    {
+      "id": 7,
+      "name": "GP11 Shooter USB Gamepad",
+      "nav": "explore",
+      "category": "Gaming",
+      "price": 550,
+      "discount": 0,
+      "new": true,
+      "rating": 5,
+      "colour": ["green", "red"],
+      "count": 1
+    },
+    {
+      "id": 8,
+      "name": "Quilted Satin Jacket",
+      "nav": "explore",
+      "category": "Gaming",
+      "price": 750,
+      "discount": 0,
+      "new": false,
+      "rating": 2,
+      "colour": ["green", "red"],
+      "count": 1
+    },
+    {
+      "id": 9,
+      "name": "The north coat",
+      "nav": "explore",
+      "category": "Gaming",
+      "price": 120,
+      "discount": 35,
+      "new": false,
+      "rating": 4,
+      "count": 1
+    },
+    {
+      "id": 10,
+      "name": "CANON EOS DSLR Camera",
+      "nav": "explore",
+      "category": "Gaming",
+      "price": 1960,
+      "discount": 0,
+      "new": false,
+      "rating": 3,
+      "count": 1
+    },
+    {
+      "id": 11,
+      "name": "ASUS FHD Gaming Laptop",
+      "nav": "explore",
+      "category": "Gaming",
+      "price": 550,
+      "discount": 0,
+      "new": true,
+      "rating": 5,
+      "count": 1
+    },
+    {
+      "id": 12,
+      "name": "Curology Product Set",
+      "nav": "explore",
+      "category": "Gaming",
+      "price": 750,
+      "discount": 0,
+      "new": false,
+      "rating": 2,
+      "count": 1
+    },
+    {
+      "id": 13,
+      "name": "Kids Electric Car",
+      "nav": "explore",
+      "category": "Gaming",
+      "price": 120,
+      "discount": 35,
+      "new": false,
+      "rating": 4,
+      "colour": ["blue", "red", "gold", "green"],
+      "count": 1
+    },
+    {
+      "id": 14,
+      "name": "Jr. Zoom Soccer Cleats",
+      "nav": "explore",
+      "category": "Gaming",
+      "price": 1960,
+      "discount": 0,
+      "new": false,
+      "rating": 3,
+      "colour": ["grey", "red"],
+      "count": 1
+    },
+    {
+      "id": 15,
+      "name": "GP11 Shooter USB Gamepad",
+      "nav": "explore",
+      "category": "Gaming",
+      "price": 550,
+      "discount": 0,
+      "new": true,
+      "rating": 5,
+      "colour": ["green", "red"],
+      "count": 1
+    },
+    {
+      "id": 16,
+      "name": "Quilted Satin Jacket",
+      "nav": "explore",
+      "category": "Gaming",
+      "price": 750,
+      "discount": 0,
+      "new": false,
+      "rating": 2,
+      "colour": ["green", "red"],
+      "count": 1
+    }
+  ],
   "wishList": [],
   "basket": [],
   "sliderHead": [

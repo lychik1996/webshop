@@ -24,7 +24,7 @@ export default function HomeItem({ item }) {
   const [deleteInWishList] = useDeleteInWishListMutation();
   const [changeCount] = useChangeCountBasketMutation();
   const addToWishList = () => {
-    if (dataWishList?.some((i => i.name === item.name))) {
+    if (dataWishList?.some((i) => i.name === item.name)) {
       const elem = dataWishList?.find((i) => i.name === item.name);
       deleteInWishList(elem.id);
     } else {
@@ -52,7 +52,13 @@ export default function HomeItem({ item }) {
           {item.discount > 0 && <p className="discount">-{item.discount}%</p>}
           {item.new && <p className="new">NEW</p>}
           <div onClick={() => addToWishList()}>
-            <img src={`/home/heart${dataWishList?.some((i => i.name === item.name))?'W':''}.svg`} className="eyes" alt=""/>
+            <img
+              src={`/home/heart${
+                dataWishList?.some((i) => i.name === item.name) ? 'W' : ''
+              }.svg`}
+              className="eyes"
+              alt=""
+            />
           </div>
           <Link to={`/${item.name}`}>
             <img src={`/products/${item.name}.png`} className="item" alt="" />

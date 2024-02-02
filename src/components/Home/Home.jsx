@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import HomeItem from './HomeItem/HomeItem';
 import './home.scss';
 import { Link } from 'react-router-dom';
@@ -6,54 +6,7 @@ import PreHomeItem from './HomeItem/PreHomeItem';
 import SaleTimer from './SaleTimer';
 import AdvenceTimer from './AdvenceTimer';
 
-const customStartDate = '2024-02-29T12:00:00';
-const StartDateAdv = '2024-02-03T12:00:00';
-const saleAPi = [
-  {
-    id: 1,
-    name: 'HAVIT HV-G92 Gamepad',
-    nav: 'sale',
-    category: 'Gaming',
-    price: 120,
-    discount: 35,
-    new: false,
-    rating: 4,
-    count: 1,
-  },
-  {
-    id: 2,
-    name: 'AK-900 Wired Keyboard',
-    nav: 'sale',
-    category: 'Gaming',
-    price: 1960,
-    discount: 0,
-    new: false,
-    rating: 3,
-    count: 1,
-  },
-  {
-    id: 3,
-    name: 'IPS LCD Gaming Monitor',
-    nav: 'sale',
-    category: 'Gaming',
-    price: 550,
-    discount: 0,
-    new: true,
-    rating: 5,
-    count: 1,
-  },
-  {
-    id: 4,
-    name: 'S-Series Comfort Chair',
-    nav: 'sale',
-    category: 'Gaming',
-    price: 750,
-    discount: 0,
-    new: false,
-    rating: 2,
-    count: 1,
-  },
-];
+
 const bestAPI = [
   {
     id: 1,
@@ -100,104 +53,110 @@ const bestAPI = [
     count: 1,
   },
 ];
-const exploreAPI = [
-  {
-    id: 1,
-    name: 'Breed Dry Dog Food',
-    nav: 'explore',
-    category: 'Gaming',
-    price: 120,
-    discount: 35,
-    new: false,
-    rating: 4,
-    count: 1,
-  },
-  {
-    id: 2,
-    name: 'CANON EOS DSLR Camera',
-    nav: 'explore',
-    category: 'Gaming',
-    price: 1960,
-    discount: 0,
-    new: false,
-    rating: 3,
-    count: 1,
-  },
-  {
-    id: 3,
-    name: 'ASUS FHD Gaming Laptop',
-    nav: 'explore',
-    category: 'Gaming',
-    price: 550,
-    discount: 0,
-    new: true,
-    rating: 5,
-    count: 1,
-  },
-  {
-    id: 4,
-    name: 'Curology Product Set',
-    nav: 'explore',
-    category: 'Gaming',
-    price: 750,
-    discount: 0,
-    new: false,
-    rating: 2,
-    count: 1,
-  },
-  {
-    id: 5,
-    name: 'Kids Electric Car',
-    nav: 'explore',
-    category: 'Gaming',
-    price: 120,
-    discount: 35,
-    new: false,
-    rating: 4,
-    colour: ['blue', 'red', 'gold', 'green'],
-    count: 1,
-  },
-  {
-    id: 6,
-    name: 'Jr. Zoom Soccer Cleats',
-    nav: 'explore',
-    category: 'Gaming',
-    price: 1960,
-    discount: 0,
-    new: false,
-    rating: 3,
-    colour: ['grey', 'red'],
-    count: 1,
-  },
-  {
-    id: 7,
-    name: 'GP11 Shooter USB Gamepad',
-    nav: 'explore',
-    category: 'Gaming',
-    price: 550,
-    discount: 0,
-    new: true,
-    rating: 5,
-    colour: ['green', 'red'],
-    count: 1,
-  },
-  {
-    id: 8,
-    name: 'Quilted Satin Jacket',
-    nav: 'explore',
-    category: 'Gaming',
-    price: 750,
-    discount: 0,
-    new: false,
-    rating: 2,
-    colour: ['green', 'red'],
-    count: 1,
-  },
-];
+
 export default function Home() {
-  const [sale, setSele] = useState(saleAPi);
   const [best, setBest] = useState(bestAPI);
-  const [explore, setExplore] = useState(exploreAPI);
+
+
+  //states for flashPage
+  const [flashSales, setFlashSales] = useState([]);
+  const [flashPage, setFlashPage] = useState(1);
+  const [maxFlashPage, setMaxFlashPage] = useState(0);
+  const [moveFlash, setMoveFlash] = useState(0);
+  const [loadingFlashSales, setLoadingFlashSales] = useState(true);
+
+  // maxFlashPage
+  useEffect(() => {
+    const maxDataFlash = async () => {
+      const response = await fetch('http://localhost:3001/flashSales');
+      const data = await response.json();
+      setMaxFlashPage(Math.ceil(data.length / 4));
+    };
+    maxDataFlash();
+  }, []);
+
+  // pagination load FlashSales
+  useEffect(() => {
+    if (loadingFlashSales) {
+      const dataFlashSales = async () => {
+        const response = await fetch(
+          `http://localhost:3001/flashSales?_limit=4&_page=${flashPage}`
+        );
+        const data = await response.json();
+        setFlashSales((prev) => [...prev, ...data]);
+        setLoadingFlashSales(false);
+      };
+      dataFlashSales();
+    }
+  }, [loadingFlashSales]);
+  //navigate FlashPage
+  const moveRightFlashPage = () => {
+    if (moveFlash < maxFlashPage - 1) {
+      setMoveFlash(moveFlash + 1);
+      if (flashPage < maxFlashPage) {
+        setFlashPage((prev) => prev + 1);
+        setLoadingFlashSales(true);
+      }
+    } else {
+      setMoveFlash(0);
+    }
+  };
+  const moveLeftFlashPage = () => {
+    if (moveFlash !== 0) {
+      setMoveFlash(moveFlash - 1);
+    }
+  };
+  //states for Explore
+  const [explore, setExplore] = useState([]);
+  const [explorePage, setExplorePage] = useState(1);
+  const [maxExplore, setMaxExplore] = useState(0);
+  const [moveExplore, setMoveExplore] = useState(0);
+  const [loadingExplore, setLoadingExplore] = useState(true);
+  
+  // maxExplore
+  useEffect(() => {
+    const maxDataExplore = async () => {
+      const response = await fetch('http://localhost:3001/explore');
+      const data = await response.json();
+      setMaxExplore(Math.ceil(data.length / 4));
+    };
+    maxDataExplore();
+  }, []);
+
+  // pagination load explore
+  useEffect(() => {
+    if (loadingExplore) {
+      const dataExplore = async () => {
+        const response = await fetch(
+          `http://localhost:3001/explore?_limit=8&_page=${explorePage}`
+        );
+        const data = await response.json();
+        setExplore((prev) => [...prev, ...data]);
+        setLoadingExplore(false);
+      };
+      dataExplore();
+    }
+  }, [loadingExplore]);
+  //navigate explore
+  const moveRightExplore = () => {
+    if (moveExplore < maxExplore - 1) {
+      setMoveExplore(moveExplore + 1);
+      if (explorePage < maxExplore) {
+        setExplorePage((prev) => prev + 1);
+        setLoadingExplore(true);
+      }
+    } else {
+      setMoveExplore(0);
+    }
+  };
+  const moveLeftExplore = () => {
+    if (moveExplore !== 0) {
+      setMoveExplore(moveExplore - 1);
+    }
+  };
+  
+
+
   //smooth scroll btn
   const scrollToTop = () => {
     window.scrollTo({
@@ -331,10 +290,10 @@ export default function Home() {
               <SaleTimer />
             </div>
             <div className="nav_home_bot_arrows">
-              <div>
+              <div onClick={() => moveLeftFlashPage()}>
                 <img src="/home/arrow-left.svg" alt="" />
               </div>
-              <div>
+              <div onClick={() => moveRightFlashPage()}>
                 <img src="/home/arrow-right.svg" alt="" />
               </div>
             </div>
@@ -342,9 +301,14 @@ export default function Home() {
         </div>
         <div className="sale">
           <div className="slider">
-            <ul className="sale_items">
-              {sale.length > 1
-                ? sale.map((item) => <HomeItem key={item.id} item={item} />)
+            <ul
+              className="sale_items"
+              style={{ transform: `translateX(${-moveFlash * 1170}px)` }}
+            >
+              {flashSales
+                ? flashSales.map((item) => (
+                    <HomeItem key={item.id} item={item} />
+                  ))
                 : new Array(4)
                     .fill(1)
                     .map((_, index) => <PreHomeItem key={index} />)}
@@ -446,24 +410,24 @@ export default function Home() {
               <h1 className="nav_home_bot_text">Explore Our Products</h1>
             </div>
             <div className="nav_home_bot_arrows">
-              <div>
+              <div onClick={()=>moveLeftExplore()}>
                 <img src="/home/arrow-left.svg" alt="" />
               </div>
-              <div>
+              <div onClick={()=>moveRightExplore()}>
                 <img src="/home/arrow-right.svg" alt="" />
               </div>
             </div>
           </div>
         </div>
         <div className="explore">
-          <div className='slider'>
-          <ul className="explore_items">
-            {sale.length > 1
-              ? explore.map((item) => <HomeItem key={item.id} item={item} />)
-              : new Array(8)
-                  .fill(1)
-                  .map((_, index) => <PreHomeItem key={index} />)}
-          </ul>
+          <div className="slider">
+            <ul className="explore_items" style={{ transform: `translateX(${-moveExplore * 1170}px)` }}>
+              {explore
+                ? explore.map((item) => <HomeItem key={item.id} item={item} />)
+                : new Array(8)
+                    .fill(1)
+                    .map((_, index) => <PreHomeItem key={index} />)}
+            </ul>
           </div>
           <Link className="explore_all">View All Products</Link>
         </div>

@@ -1,40 +1,17 @@
-import { useEffect, useMemo, useState } from "react";
-const StartDateAdv = '2024-02-03T12:00:00';
+import { useEffect, useState } from "react";
+import timerIntervalFunc from "./timerIntervalFunc";
+const StartDateAdv = '2024-02-05T12:00:00';
+
+
 export default function AdvenceTimer(){
+  
     const [timeAdv, setTimeAdv] = useState({
         days: 0,
         hours: 0,
         minutes: 0,
         seconds: 0,
       });
-    const timerIntervalFunc = (startDate, setEffect) => {
-        const timerInterval = setInterval(() => {
-          const elapsedTime = startDate - new Date();
     
-          if (elapsedTime >= 0) {
-            const remainingTime = calculateTimeRemaining(elapsedTime);
-            setEffect(remainingTime);
-          } else {
-            clearInterval(timerInterval);
-          }
-        }, 1000);
-      };
-      //calculate Date
-      const calculateTimeRemaining = useMemo(() => (elapsedTime) => {
-        const remainingSeconds = Math.floor(elapsedTime / 1000);
-    
-        const days = Math.floor(remainingSeconds / (24 * 60 * 60));
-        const hours = Math.floor((remainingSeconds % (24 * 60 * 60)) / 3600);
-        const minutes = Math.floor((remainingSeconds % 3600) / 60);
-        const seconds = remainingSeconds % 60;
-    
-        return {
-          days,
-          hours,
-          minutes,
-          seconds,
-        };
-      }, []);
     
       useEffect(() => {
         const startDate = new Date(StartDateAdv);
