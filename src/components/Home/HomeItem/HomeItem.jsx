@@ -34,7 +34,6 @@ export default function HomeItem({ item }) {
       console.log(itemWithOutId);
     }
   };
-
   const addToBasket = () => {
     if (dataBasket?.some((i) => i.name === item.name)) {
       const elem = dataBasket?.find((i) => i.name === item.name);

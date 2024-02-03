@@ -177,7 +177,7 @@
       "count": 1
     }
   ],
-  "explore":[
+  "explore": [
     {
       "id": 1,
       "name": "Breed Dry Dog Food",
@@ -231,7 +231,12 @@
       "discount": 35,
       "new": false,
       "rating": 4,
-      "colour": ["blue", "red", "gold", "green"],
+      "colour": [
+        "blue",
+        "red",
+        "gold",
+        "green"
+      ],
       "count": 1
     },
     {
@@ -243,7 +248,10 @@
       "discount": 0,
       "new": false,
       "rating": 3,
-      "colour": ["grey", "red"],
+      "colour": [
+        "grey",
+        "red"
+      ],
       "count": 1
     },
     {
@@ -255,7 +263,10 @@
       "discount": 0,
       "new": true,
       "rating": 5,
-      "colour": ["green", "red"],
+      "colour": [
+        "green",
+        "red"
+      ],
       "count": 1
     },
     {
@@ -267,7 +278,10 @@
       "discount": 0,
       "new": false,
       "rating": 2,
-      "colour": ["green", "red"],
+      "colour": [
+        "green",
+        "red"
+      ],
       "count": 1
     },
     {
@@ -323,7 +337,12 @@
       "discount": 35,
       "new": false,
       "rating": 4,
-      "colour": ["blue", "red", "gold", "green"],
+      "colour": [
+        "blue",
+        "red",
+        "gold",
+        "silver"
+      ],
       "count": 1
     },
     {
@@ -335,7 +354,10 @@
       "discount": 0,
       "new": false,
       "rating": 3,
-      "colour": ["grey", "red"],
+      "colour": [
+        "grey",
+        "red"
+      ],
       "count": 1
     },
     {
@@ -347,7 +369,10 @@
       "discount": 0,
       "new": true,
       "rating": 5,
-      "colour": ["green", "red"],
+      "colour": [
+        "green",
+        "red"
+      ],
       "count": 1
     },
     {
@@ -359,7 +384,10 @@
       "discount": 0,
       "new": false,
       "rating": 2,
-      "colour": ["green", "red"],
+      "colour": [
+        "green",
+        "red"
+      ],
       "count": 1
     }
   ],
