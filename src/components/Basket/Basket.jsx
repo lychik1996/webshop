@@ -23,10 +23,10 @@ export default function Basket() {
     const {handleSubmit,register,reset}=useForm();
     const {data}=useLoadBasketQuery();
     const handleCode=(code)=>{
-      console.log(code);
+      
       reset();
     }
-    console.log(data);
+    
     const totalSum=data?.reduce((acum,item)=>acum+item.count*item.price,0);
     
   return (

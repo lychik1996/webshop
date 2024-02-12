@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import WishListItem from './WishLIstItem';
 import WishListForU from './WishListForU';
 import {useLoadWishListQuery} from '../../store/api/apiWish';
+import { useAddInBasketMutation, useChangeCountBasketMutation, useLoadBasketQuery } from '../../store/api/apiBasket';
 // const data = [
 //   { id: 1, name: 'Gucci duffle bag', price: 1160, discount: 35, new:false },
 //   { id: 2, name: 'RGB liquid CPU Cooler', price: 1960, discount: 0, new:true },
@@ -50,18 +51,34 @@ const dataforU = [
   },
 ];
 export default function WishList() {
-  const {data}=useLoadWishListQuery();
-  console.log(data);
+  const {data: dataWishList}=useLoadWishListQuery();
+  const {data: dataBasket}=useLoadBasketQuery();
+  const [addToBasket]=useAddInBasketMutation();
+  const [changeCount] = useChangeCountBasketMutation();
+  
+  
+  const addInBasket = ()=>{
+    dataWishList.forEach((item)=>{
+      if (dataBasket?.some((i) => i.name === item.name)) {
+        const elem = dataBasket?.find((i) => i.name === item.name);
+        changeCount({ id: elem.id, count: elem.count + 1 });
+      } else {
+        const itemWithOutId = { ...item };
+        delete itemWithOutId.id;
+        addToBasket(itemWithOutId);
+      }
+    })
+  }
   
   return (
     <>
       <div className="container">
         <div className="wishList_top">
-          <p>Wishlist({data?data.length:'0'})</p>
-          <button>Move All To Bag</button>
+          <p>Wishlist({dataWishList?dataWishList.length:'0'})</p>
+          <button onClick={()=>addInBasket()}>Move All To Bag</button>
         </div>
         <ul className="wishList_items">
-            {data?.map((item,index)=>(
+            {dataWishList?.map((item,index)=>(
                 <WishListItem key={index} item={item} index ={index}/>
             ))}
         </ul>

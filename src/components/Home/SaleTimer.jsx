@@ -1,20 +1,28 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import timerIntervalFunc from './timerIntervalFunc';
 
-const customStartDate = '2024-02-29T12:00:00';
 export default function SaleTimer() {
+  const [customStartDate,setCustomStartData]= useState('');
   const [timeSales, setTimeSales] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
   });
+  useEffect(()=>{
+    const loadData = async()=>{
+      const response = await fetch('http://localhost:3001/data/1');
+      const data = await response.json();
+      setCustomStartData(data);
+    }
+    loadData();
+  },[])
 
   useEffect(() => {
-    const startDate = new Date(customStartDate);
+    const startDate = new Date(customStartDate.count);
     timerIntervalFunc(startDate, setTimeSales);
     return () => clearInterval(timerIntervalFunc);
-  }, []);
+  }, [customStartDate]);
   return (
     <>
       <div className="nav_home_bot_time">

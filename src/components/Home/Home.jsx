@@ -6,7 +6,8 @@ import PreHomeItem from './HomeItem/PreHomeItem';
 import SaleTimer from './SaleTimer';
 import AdvenceTimer from './AdvenceTimer';
 
-
+const dbFlash = 'http://localhost:3001/flashSales';
+const mochFlash = 'https://64faf536cb9c00518f7a6c4b.mockapi.io/flashSales';
 const bestAPI = [
   {
     id: 1,
@@ -57,66 +58,68 @@ const bestAPI = [
 export default function Home() {
   const [best, setBest] = useState(bestAPI);
 
-
   //states for flashPage
   const [flashData, setFlashData] = useState({
     sales: [],
     page: 1,
     maxPage: 0,
     move: 0,
-    loading: true
+    loading: true,
   });
-  
+
   // maxFlashPage
   useEffect(() => {
     const maxDataFlash = async () => {
-      const response = await fetch('http://localhost:3001/flashSales');
+      const response = await fetch(`${dbFlash}`);
       const data = await response.json();
-      setFlashData(prevData => ({ ...prevData, maxPage: Math.ceil(data.length / 4) }));
+      setFlashData((prevData) => ({
+        ...prevData,
+        maxPage: Math.ceil(data.length / 4),
+      }));
     };
     maxDataFlash();
   }, []);
-  
+
   // pagination load FlashSales
   useEffect(() => {
     if (flashData.loading) {
       const dataFlashSales = async () => {
         const response = await fetch(
-          `http://localhost:3001/flashSales?_limit=4&_page=${flashData.page}`
+          `${dbFlash}?_limit=4&_page=${flashData.page}`
         );
         const data = await response.json();
-        setFlashData(prevData => ({
+        setFlashData((prevData) => ({
           ...prevData,
           sales: [...prevData.sales, ...data],
-          loading: false
+          loading: false,
         }));
       };
       dataFlashSales();
     }
   }, [flashData.loading, flashData.page]);
-  
+
   // navigate FlashPage
   const moveRightFlashPage = () => {
     if (flashData.move < flashData.maxPage - 1) {
-      setFlashData(prevData => ({
+      setFlashData((prevData) => ({
         ...prevData,
-        move:prevData.move+1
+        move: prevData.move + 1,
       }));
-      if(flashData.page <flashData.maxPage){
-        setFlashData((prevData)=>({
+      if (flashData.page < flashData.maxPage) {
+        setFlashData((prevData) => ({
           ...prevData,
-          page:prevData.page+1,
-          loading:true
-        }))
+          page: prevData.page + 1,
+          loading: true,
+        }));
       }
     } else {
-      setFlashData(prevData => ({ ...prevData, move: 0 }));
+      setFlashData((prevData) => ({ ...prevData, move: 0 }));
     }
   };
-  
+
   const moveLeftFlashPage = () => {
     if (flashData.move !== 0) {
-      setFlashData(prevData => ({ ...prevData, move: prevData.move - 1 }));
+      setFlashData((prevData) => ({ ...prevData, move: prevData.move - 1 }));
     }
   };
   //states for Explore
@@ -125,19 +128,22 @@ export default function Home() {
     page: 1,
     max: 0,
     move: 0,
-    loading: true
+    loading: true,
   });
-  
+
   // maxExplore
   useEffect(() => {
     const maxDataExplore = async () => {
       const response = await fetch('http://localhost:3001/explore');
       const data = await response.json();
-      setExploreData(prevData => ({ ...prevData, max: Math.ceil(data.length / 8) }));
+      setExploreData((prevData) => ({
+        ...prevData,
+        max: Math.ceil(data.length / 8),
+      }));
     };
     maxDataExplore();
   }, []);
-  
+
   // pagination load explore
   useEffect(() => {
     if (exploreData.loading) {
@@ -146,42 +152,40 @@ export default function Home() {
           `http://localhost:3001/explore?_limit=8&_page=${exploreData.page}`
         );
         const data = await response.json();
-        setExploreData(prevData => ({
+        setExploreData((prevData) => ({
           ...prevData,
           items: [...prevData.items, ...data],
-          loading: false
+          loading: false,
         }));
       };
       dataExplore();
     }
   }, [exploreData.loading, exploreData.page]);
-  
+
   // navigate explore
   const moveRightExplore = () => {
     if (exploreData.move < exploreData.max - 1) {
-      setExploreData(prevData => ({
+      setExploreData((prevData) => ({
         ...prevData,
         move: prevData.move + 1,
       }));
-      if(exploreData.page<exploreData.max){
-        setExploreData((prevData)=>({
+      if (exploreData.page < exploreData.max) {
+        setExploreData((prevData) => ({
           ...prevData,
-          page:prevData.page+1,
-          loading:true
-        }))
+          page: prevData.page + 1,
+          loading: true,
+        }));
       }
     } else {
-      setExploreData(prevData => ({ ...prevData, move: 0 }));
+      setExploreData((prevData) => ({ ...prevData, move: 0 }));
     }
   };
-  
+
   const moveLeftExplore = () => {
     if (exploreData.move !== 0) {
-      setExploreData(prevData => ({ ...prevData, move: prevData.move - 1 }));
+      setExploreData((prevData) => ({ ...prevData, move: prevData.move - 1 }));
     }
   };
-  
-
 
   //smooth scroll btn
   const scrollToTop = () => {
@@ -213,7 +217,6 @@ export default function Home() {
       prevIndex === sliderHead.length - 1 ? 0 : prevIndex + 1
     );
   };
-
   return (
     <>
       <div className="container">
@@ -331,13 +334,14 @@ export default function Home() {
               className="sale_items"
               style={{ transform: `translateX(${-flashData.move * 1170}px)` }}
             >
-              {flashData.sales
-                && flashData.sales.map((item) => (
-                    <HomeItem key={item.id} item={item} />
-                  ))}
-                {flashData.loading && new Array(4)
-                    .fill(1)
-                    .map((_, index) => <PreHomeItem key={index} />)}
+              {flashData.sales &&
+                flashData.sales.map((item) => (
+                  <HomeItem key={item.id} item={item} />
+                ))}
+              {flashData.loading &&
+                new Array(4)
+                  .fill(1)
+                  .map((_, index) => <PreHomeItem key={index} />)}
             </ul>
           </div>
           <Link className="sale_all">View All Products</Link>
@@ -436,10 +440,10 @@ export default function Home() {
               <h1 className="nav_home_bot_text">Explore Our Products</h1>
             </div>
             <div className="nav_home_bot_arrows">
-              <div onClick={()=>moveLeftExplore()}>
+              <div onClick={() => moveLeftExplore()}>
                 <img src="/home/arrow-left.svg" alt="" />
               </div>
-              <div onClick={()=>moveRightExplore()}>
+              <div onClick={() => moveRightExplore()}>
                 <img src="/home/arrow-right.svg" alt="" />
               </div>
             </div>
@@ -447,12 +451,18 @@ export default function Home() {
         </div>
         <div className="explore">
           <div className="slider">
-            <ul className="explore_items" style={{ transform: `translateX(${-exploreData.move * 1170}px)` }}>
+            <ul
+              className="explore_items"
+              style={{ transform: `translateX(${-exploreData.move * 1170}px)` }}
+            >
               {exploreData.items &&
-                 exploreData.items.map((item) => <HomeItem key={item.id} item={item} />)}
-                {exploreData.loading &&  new Array(8)
-                    .fill(1)
-                    .map((_, index) => <PreHomeItem key={index} />)}
+                exploreData.items.map((item) => (
+                  <HomeItem key={item.id} item={item} />
+                ))}
+              {exploreData.loading &&
+                new Array(8)
+                  .fill(1)
+                  .map((_, index) => <PreHomeItem key={index} />)}
             </ul>
           </div>
           <Link className="explore_all">View All Products</Link>
