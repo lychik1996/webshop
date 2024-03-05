@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useDeleteInBasketMutation, useLoadBasketQuery } from '../../../store/api/apiBasket';
 import CheckOutItem from './CheckOutItem';
 import { useState } from 'react';
-import { check } from 'prettier';
 export default function CheckOut() {
   const { handleSubmit, register, reset } = useForm();
   const {data:basketItem}=useLoadBasketQuery();
