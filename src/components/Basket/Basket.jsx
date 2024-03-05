@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import BasketItem from './BasketItem';
 import './basket.scss';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useLoadBasketQuery } from '../../store/api/apiBasket';
 
@@ -18,17 +18,20 @@ import { useLoadBasketQuery } from '../../store/api/apiBasket';
 //     }
 // ]
 export default function Basket() {
-  
-    // const [item,setItem]=useState(data);
-    const {handleSubmit,register,reset}=useForm();
-    const {data}=useLoadBasketQuery();
-    const handleCode=(code)=>{
-      
-      reset();
-    }
-    
-    const totalSum=data?.reduce((acum,item)=>acum+item.count*item.price,0);
-    
+  // const [item,setItem]=useState(data);
+  const { handleSubmit, register, reset } = useForm();
+  const { data } = useLoadBasketQuery();
+  const handleCode = (code) => {
+    console.log(code);
+    reset();
+  };
+
+  const totalSum = data?.reduce(
+    (acum, item) =>
+      acum + item.count * Math.ceil(item.price * (1 - (item.discount/100))),
+    0
+  );
+
   return (
     <>
       <div className="container">
@@ -43,23 +46,27 @@ export default function Basket() {
         </div>
 
         <ul className="basket_products">
-          <li className='basket_products_info'>
+          <li className="basket_products_info">
             <p>Product</p>
             <p>Price</p>
             <p>Quantity</p>
             <p>Subtotal</p>
           </li>
-          {data?.map((item,index)=>(
-            <BasketItem key={index} item={item}/>
+          {data?.map((item, index) => (
+            <BasketItem key={index} item={item} />
           ))}
         </ul>
         <div className="basket_navigate">
-          <Link to='/'>Return To Shop</Link>
+          <Link to="/">Return To Shop</Link>
           <button>Update Cart</button>
         </div>
         <div className="basket_bottom">
           <form className="basket_code" onSubmit={handleSubmit(handleCode)}>
-            <input type="text" {...register('code',{required:true})} placeholder="Coupon Code" />
+            <input
+              type="text"
+              {...register('code', { required: true })}
+              placeholder="Coupon Code"
+            />
             <button>Apply Coupon</button>
           </form>
           <div className="basket_total">
@@ -68,17 +75,17 @@ export default function Basket() {
               <p>Subtotal:</p>
               <p>${totalSum}</p>
             </div>
-            <div className='string'></div>
+            <div className="string"></div>
             <div className="basket_shipping">
               <p>Shipping:</p>
               <p>Free</p>
             </div>
-            <div className='string'></div>
+            <div className="string"></div>
             <div className="basket_all">
               <p>Total:</p>
               <p>${totalSum}</p>
             </div>
-            <Link to='/basket/checkout'>Procees to checkout</Link>
+            <Link to="/basket/checkout">Procees to checkout</Link>
           </div>
         </div>
       </div>

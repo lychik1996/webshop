@@ -31,7 +31,6 @@ export default function HomeItem({ item }) {
       const itemWithOutId = { ...item };
       delete itemWithOutId.id;
       addInWishList(itemWithOutId);
-      console.log(itemWithOutId);
     }
   };
   const addToBasket = () => {

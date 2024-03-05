@@ -9,7 +9,7 @@ export default function CheckOutItem({ item }) {
 
           <p>{item.name}</p>
         </div>
-        <p className="checkout_right_item_right">${item.price * item.count}</p>
+        <p className="checkout_right_item_right">${Math.ceil(item.price*(1-item.discount/100)) * item.count}</p>
       </div>
     </>
   );

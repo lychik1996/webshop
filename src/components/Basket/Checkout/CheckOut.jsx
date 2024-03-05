@@ -18,7 +18,7 @@ export default function CheckOut() {
       reset();
     }
   };
-  const subTotal = basketItem?basketItem.reduce((acum,item)=>acum+item.price*item.count,0):0;
+  const subTotal = basketItem?basketItem.reduce((acum,item)=>acum+Math.ceil(item.price*(1-item.discount/100))*item.count,0):0;
   const total = subTotal*coupon;
 
   return (

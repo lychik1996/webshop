@@ -22,7 +22,7 @@ export default function BasketItem({ item }) {
           />
           <p>{item.name}</p>
         </div>
-        <p className="basket_product_price">${item.price}</p>
+        <p className="basket_product_price">${Math.ceil(item.price*(1-item.discount/100))}</p>
         <div className="basket_product_quantity">
           <input
             type="text"
@@ -47,7 +47,7 @@ export default function BasketItem({ item }) {
             />
           </div>
         </div>
-        <p className="basket_product_prices">${item.price * item.count}</p>
+        <p className="basket_product_prices">${Math.ceil(item.price*(1-item.discount/100)) * item.count}</p>
       </li>
     </>
   );

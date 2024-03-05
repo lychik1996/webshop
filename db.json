@@ -5,50 +5,21 @@
       "name": "Havic HV G-92 Gamepad",
       "category": "Gaming",
       "description": "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressuresensitive.",
-      "imgsL": [
-        "1l.png",
-        "2l.png",
-        "3l.png",
-        "4l.png"
-      ],
-      "imgsS": [
-        "1s.png",
-        "2s.png",
-        "3s.png",
-        "4s.png"
-      ],
+      "imgsL": ["1l.png", "2l.png", "3l.png", "4l.png"],
+      "imgsS": ["1s.png", "2s.png", "3s.png", "4s.png"],
       "price": 192,
       "rating": 3,
       "reviews": 150,
-      "colour": [
-        "rgba(160, 188, 224, 1)",
-        "rgba(224, 117, 117, 1)"
-      ],
-      "sizes": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
-      ]
+      "colour": ["rgba(160, 188, 224, 1)", "rgba(224, 117, 117, 1)"],
+      "sizes": ["XS", "S", "M", "L", "XL"]
     },
     {
       "id": 2,
       "name": "ASUS FHD Gaming Laptop",
       "category": "Gaming",
       "description": "gaming laptope for u u can use asdfsadfadf sdfjksdjfkjaosjf ekfpokewor  dsfk podskf wekoewk fokds wek foewkf d",
-      "imgsL": [
-        "1l.png",
-        "2l.png",
-        "3l.png",
-        "4l.png"
-      ],
-      "imgsS": [
-        "1s.png",
-        "2s.png",
-        "3s.png",
-        "4s.png"
-      ],
+      "imgsL": ["1l.png", "2l.png", "3l.png", "4l.png"],
+      "imgsS": ["1s.png", "2s.png", "3s.png", "4s.png"],
       "price": 900,
       "rating": 5,
       "reviews": 40,
@@ -58,13 +29,7 @@
         "silver",
         "gold"
       ],
-      "sizes": [
-        "15.5",
-        "16",
-        "19",
-        "20",
-        "22"
-      ]
+      "sizes": ["15.5", "16", "19", "20", "22"]
     }
   ],
   "staffs": [
@@ -107,7 +72,7 @@
       "price": 1960,
       "discount": 0,
       "new": false,
-      "rating": 3,
+      "rating": 4,
       "count": 1
     },
     {
@@ -231,12 +196,7 @@
       "discount": 35,
       "new": false,
       "rating": 4,
-      "colour": [
-        "blue",
-        "red",
-        "gold",
-        "green"
-      ],
+      "colour": ["blue", "red", "gold", "green"],
       "count": 1
     },
     {
@@ -248,10 +208,7 @@
       "discount": 0,
       "new": false,
       "rating": 3,
-      "colour": [
-        "grey",
-        "red"
-      ],
+      "colour": ["grey", "red"],
       "count": 1
     },
     {
@@ -263,10 +220,7 @@
       "discount": 0,
       "new": true,
       "rating": 5,
-      "colour": [
-        "green",
-        "red"
-      ],
+      "colour": ["green", "red"],
       "count": 1
     },
     {
@@ -278,10 +232,7 @@
       "discount": 0,
       "new": false,
       "rating": 2,
-      "colour": [
-        "green",
-        "red"
-      ],
+      "colour": ["green", "red"],
       "count": 1
     },
     {
@@ -337,12 +288,7 @@
       "discount": 35,
       "new": false,
       "rating": 4,
-      "colour": [
-        "blue",
-        "red",
-        "gold",
-        "silver"
-      ],
+      "colour": ["blue", "red", "gold", "silver"],
       "count": 1
     },
     {
@@ -354,10 +300,7 @@
       "discount": 0,
       "new": false,
       "rating": 3,
-      "colour": [
-        "grey",
-        "red"
-      ],
+      "colour": ["grey", "red"],
       "count": 1
     },
     {
@@ -369,10 +312,7 @@
       "discount": 0,
       "new": true,
       "rating": 5,
-      "colour": [
-        "green",
-        "red"
-      ],
+      "colour": ["green", "red"],
       "count": 1
     },
     {
@@ -384,38 +324,12 @@
       "discount": 0,
       "new": false,
       "rating": 2,
-      "colour": [
-        "green",
-        "red"
-      ],
+      "colour": ["green", "red"],
       "count": 1
     }
   ],
   "wishList": [],
-  "basket": [
-    {
-      "name": "HAVIT HV-G92 Gamepad",
-      "nav": "sale",
-      "category": "Gaming",
-      "price": 120,
-      "discount": 35,
-      "new": false,
-      "rating": 4,
-      "count": 2,
-      "id": 1
-    },
-    {
-      "name": "AK-900 Wired Keyboard",
-      "nav": "sale",
-      "category": "Gaming",
-      "price": 1960,
-      "discount": 0,
-      "new": false,
-      "rating": 3,
-      "count": 2,
-      "id": 2
-    }
-  ],
+  "basket": [],
   "sliderHead": [
     {
       "id": 1
