@@ -8,7 +8,9 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start-dev": "npx concurrently \"npm run dev\" \"json-server --watch db.json --port 3001\""
+    "start-dev": "npx concurrently \"npm run dev\" \"json-server --watch db.json --port 3001\"",
+    "start-prod": "npm run build && json-server --watch db.json --port 3001",
+    "start-vercel": "json-server --watch db.json --port $PORT"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",

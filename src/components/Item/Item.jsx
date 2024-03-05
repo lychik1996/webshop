@@ -34,7 +34,7 @@ export default function Item() {
   useEffect(() => {
     const loadItem = async () => {
       try {
-        const response = await fetch(`${MOCH}?name=${itemName}`);
+        const response = await fetch(`${'http://localhost:3001/items'}?name=${itemName}`);
         if(!response.ok){
           navigate('/notfoundpage')
           return

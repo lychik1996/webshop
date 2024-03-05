@@ -56,7 +56,7 @@
         "rgba(160, 188, 224, 1)",
         "rgba(224, 117, 117, 1)",
         "silver",
-        "black"
+        "gold"
       ],
       "sizes": [
         "15.5",
@@ -392,7 +392,30 @@
     }
   ],
   "wishList": [],
-  "basket": [],
+  "basket": [
+    {
+      "name": "HAVIT HV-G92 Gamepad",
+      "nav": "sale",
+      "category": "Gaming",
+      "price": 120,
+      "discount": 35,
+      "new": false,
+      "rating": 4,
+      "count": 2,
+      "id": 1
+    },
+    {
+      "name": "AK-900 Wired Keyboard",
+      "nav": "sale",
+      "category": "Gaming",
+      "price": 1960,
+      "discount": 0,
+      "new": false,
+      "rating": 3,
+      "count": 2,
+      "id": 2
+    }
+  ],
   "sliderHead": [
     {
       "id": 1
@@ -413,12 +436,12 @@
   "data": [
     {
       "name": "FlashSalesData",
-      "count": "2024-02-29T12:00:00",
+      "count": "2024-03-29T12:00:00",
       "id": 1
     },
     {
       "name": "StartDataAdv",
-      "count": "2024-02-20T12:00:00",
+      "count": "2024-04-20T12:00:00",
       "id": 2
     }
   ]

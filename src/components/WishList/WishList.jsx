@@ -56,7 +56,7 @@ export default function WishList() {
   const [addToBasket]=useAddInBasketMutation();
   const [changeCount] = useChangeCountBasketMutation();
   
-  
+
   const addInBasket = ()=>{
     dataWishList.forEach((item)=>{
       if (dataBasket?.some((i) => i.name === item.name)) {
