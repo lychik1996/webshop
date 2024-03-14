@@ -39,6 +39,7 @@ input:focus {
       p {
         font-size: 16px;
         line-height: 24px;
+        width: 90px;
       }
       .basket_product_imgs {
         display: flex;
@@ -75,11 +76,11 @@ input:focus {
           border: none;
         }
         div {
-            display: flex;
-            flex-direction: column;
+          display: flex;
+          flex-direction: column;
           img {
           }
-          img:active{
+          img:active {
             background-color: rgb(245, 248, 251);
           }
         }

@@ -74,7 +74,7 @@ export default function WishList() {
     <>
       <div className="container">
         <div className="wishList_top">
-          <p>Wishlist({dataWishList?dataWishList.length:'0'})</p>
+          <p>Wishlist({dataWishList.length})</p>
           <button onClick={()=>addInBasket()}>Move All To Bag</button>
         </div>
         <ul className="wishList_items">

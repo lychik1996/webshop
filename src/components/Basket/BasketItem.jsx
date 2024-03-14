@@ -15,11 +15,14 @@ export default function BasketItem({ item }) {
             src="/basket/icon-cancel.svg"
             alt=""
           />
-          <img
+          <div style={{width:54}}>
+          <img className="basket_product-img"
             src={`/products/${item.name}.png`}
             alt=""
             style={{ maxWidth: 54, maxHeight: 54 }}
           />
+          </div>
+          
           <p>{item.name}</p>
         </div>
         <p className="basket_product_price">${Math.ceil(item.price*(1-item.discount/100))}</p>
